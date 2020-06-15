@@ -1,0 +1,30 @@
+PODS:
+  - FSCalendar (2.8.1)
+  - Realm (5.0.2):
+    - Realm/Headers (= 5.0.2)
+  - Realm/Headers (5.0.2)
+  - RealmSwift (5.0.2):
+    - Realm (= 5.0.2)
+  - "UITextView+Placeholder (1.4.0)"
+
+DEPENDENCIES:
+  - FSCalendar
+  - RealmSwift
+  - "UITextView+Placeholder"
+
+SPEC REPOS:
+  trunk:
+    - FSCalendar
+    - Realm
+    - RealmSwift
+    - "UITextView+Placeholder"
+
+SPEC CHECKSUMS:
+  FSCalendar: 5245140456fcbcac5824c203b98bd8068bdfee1a
+  Realm: 6b6f096671b64b04d08974177cabb2ff9343d153
+  RealmSwift: a3db6be0488bf3e1d5314c2956cefe98a65cdd01
+  "UITextView+Placeholder": d7b0c400921f66523f3a85d74f774512e14f6502
+
+PODFILE CHECKSUM: 57f83f57cfa73bece72b13d20938b37cf00e8d41
+
+COCOAPODS: 1.9.3
