@@ -92,11 +92,11 @@
 				9560B3E7249705C600ED8856 /* SceneDelegate.swift */,
 				9560B3FF2497668600ED8856 /* View */,
 				9560B3F92497436600ED8856 /* Study.swift */,
+				958C0D9D249791E600360500 /* CommonMethods.swift */,
 				9560B3EB249705C600ED8856 /* Main.storyboard */,
 				9560B3EE249705C900ED8856 /* Assets.xcassets */,
 				9560B3F0249705C900ED8856 /* LaunchScreen.storyboard */,
 				9560B3F3249705C900ED8856 /* Info.plist */,
-				958C0D9D249791E600360500 /* CommonMethods.swift */,
 			);
 			path = RestudyScheduler;
 			sourceTree = "<group>";

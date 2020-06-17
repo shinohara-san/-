@@ -10,7 +10,7 @@ import UIKit
 import FSCalendar
 import RealmSwift
 
-class ViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate, FSCalendarDelegate {
+class ViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate, FSCalendarDelegate, FSCalendarDataSource {
     @IBOutlet var titleTextField: UITextField!
     @IBOutlet var detailTextField: UITextView!
     @IBOutlet var calendar: FSCalendar!
@@ -20,6 +20,10 @@ class ViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate,
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let config = Realm.Configuration(schemaVersion: 1)
+        Realm.Configuration.defaultConfiguration = config
+        
+//        print(Realm.Configuration.defaultConfiguration.fileURL!)
         detailTextField.text = "勉強したことを記入してください"
         detailTextField.textColor = UIColor.lightGray
         detailTextField.returnKeyType = .done
@@ -27,6 +31,7 @@ class ViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate,
         titleTextField.delegate = self
         
         calendar.delegate = self
+        calendar.dataSource = self
         
         detailTextField.layer.borderWidth = 1.0
         detailTextField.layer.borderColor = UIColor.lightGray.cgColor
@@ -88,9 +93,14 @@ class ViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate,
         newStudy.title = title
         newStudy.detail = detail
         newStudy.date = dateString
+        newStudy.firstDay = Calculate.getRestudyDay(study: newStudy, value: 1)
+        newStudy.secondDay = Calculate.getRestudyDay(study: newStudy, value: 7)
+        newStudy.thirdDay = Calculate.getRestudyDay(study: newStudy, value: 16)
+        newStudy.forthDay = Calculate.getRestudyDay(study: newStudy, value: 35)
+        newStudy.fifthDay = Calculate.getRestudyDay(study: newStudy, value: 62)
+        
         
         let realm = try! Realm()
-//        print(Realm.Configuration.defaultConfiguration.fileURL!)
         try! realm.write {
             realm.add(newStudy)
         }
@@ -100,6 +110,8 @@ class ViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate,
         detailTextField.textColor = UIColor.lightGray
         
     }
+    
+    
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         let modifiedDate = Calendar.current.date(byAdding: .hour, value: 9, to: date)!

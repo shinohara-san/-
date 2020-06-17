@@ -51,6 +51,10 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="270" id="TYk-0p-kJM"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="allowsSelection" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="allowsMultipleSelection" value="NO"/>
+                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -97,7 +101,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0Tu-d2-nP5">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="404" width="414" height="458"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" textLabel="mtj-Yi-0or" detailTextLabel="tyV-YQ-4Ej" style="IBUITableViewCellStyleValue1" id="CyM-8K-z81">
@@ -126,23 +130,47 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DkP-FT-Ezt" customClass="FSCalendar">
+                                <rect key="frame" x="0.0" y="44" width="414" height="300"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="rQM-8P-EvO"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No subjects to review" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BlL-aV-CbP">
+                                <rect key="frame" x="0.0" y="344" width="414" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="lQ1-p6-bOW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="GhC-vt-6Ex" firstAttribute="bottom" secondItem="0Tu-d2-nP5" secondAttribute="bottom" id="7H4-Bi-IEb"/>
-                            <constraint firstItem="0Tu-d2-nP5" firstAttribute="top" secondItem="GhC-vt-6Ex" secondAttribute="top" id="ZJS-9b-xfK"/>
-                            <constraint firstItem="GhC-vt-6Ex" firstAttribute="trailing" secondItem="0Tu-d2-nP5" secondAttribute="trailing" id="hwy-kt-Lyw"/>
-                            <constraint firstItem="0Tu-d2-nP5" firstAttribute="leading" secondItem="GhC-vt-6Ex" secondAttribute="leading" id="mHP-1l-iI7"/>
+                            <constraint firstItem="DkP-FT-Ezt" firstAttribute="top" secondItem="GhC-vt-6Ex" secondAttribute="top" id="JE6-Bm-2dO"/>
+                            <constraint firstItem="0Tu-d2-nP5" firstAttribute="trailing" secondItem="GhC-vt-6Ex" secondAttribute="trailing" id="KHg-G4-LvZ"/>
+                            <constraint firstItem="BlL-aV-CbP" firstAttribute="top" secondItem="DkP-FT-Ezt" secondAttribute="bottom" id="KeD-dd-l39"/>
+                            <constraint firstItem="0Tu-d2-nP5" firstAttribute="top" secondItem="BlL-aV-CbP" secondAttribute="bottom" id="XuA-qD-bdr"/>
+                            <constraint firstItem="DkP-FT-Ezt" firstAttribute="leading" secondItem="GhC-vt-6Ex" secondAttribute="leading" id="Yll-5k-Fi4"/>
+                            <constraint firstItem="0Tu-d2-nP5" firstAttribute="bottom" secondItem="GhC-vt-6Ex" secondAttribute="bottom" id="mp8-dw-JZA"/>
+                            <constraint firstItem="GhC-vt-6Ex" firstAttribute="trailing" secondItem="BlL-aV-CbP" secondAttribute="trailing" id="udA-H4-dVK"/>
+                            <constraint firstItem="BlL-aV-CbP" firstAttribute="leading" secondItem="GhC-vt-6Ex" secondAttribute="leading" id="uxj-g4-RjE"/>
+                            <constraint firstItem="0Tu-d2-nP5" firstAttribute="leading" secondItem="GhC-vt-6Ex" secondAttribute="leading" id="xlv-8B-0yf"/>
+                            <constraint firstItem="DkP-FT-Ezt" firstAttribute="trailing" secondItem="GhC-vt-6Ex" secondAttribute="trailing" id="zU9-FU-l5T"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="GhC-vt-6Ex"/>
                     </view>
                     <connections>
+                        <outlet property="calendar" destination="DkP-FT-Ezt" id="wch-3F-SAb"/>
+                        <outlet property="subjectsLabel" destination="BlL-aV-CbP" id="PLD-Gl-t7k"/>
                         <outlet property="tableView" destination="0Tu-d2-nP5" id="l3c-rb-VEa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YG9-MQ-Sjq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1807" y="129"/>
+            <point key="canvasLocation" x="1805.7971014492755" y="128.57142857142856"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="LhL-9f-l1C">
@@ -215,8 +243,8 @@
                         <viewLayoutGuide key="safeArea" id="DLm-kh-u4u"/>
                     </view>
                     <connections>
-                        <outlet property="dateLabel" destination="yJH-gn-gPD" id="Ndj-jD-Al4"/>
-                        <outlet property="detailLabel" destination="f0S-iH-F3f" id="XRx-Hf-fR7"/>
+                        <outlet property="dateLabel" destination="f0S-iH-F3f" id="CVl-yw-Is1"/>
+                        <outlet property="detailLabel" destination="yJH-gn-gPD" id="nEN-lb-ysw"/>
                         <outlet property="fifthDay" destination="phx-FY-kaU" id="0gR-Mg-Igr"/>
                         <outlet property="firstDay" destination="inu-mD-FwR" id="FSj-aa-Bnc"/>
                         <outlet property="fourthDay" destination="6J7-uO-vIn" id="Wj2-Vk-82T"/>
