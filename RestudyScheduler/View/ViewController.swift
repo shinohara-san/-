@@ -4,17 +4,16 @@
 //
 //  Created by Yuki Shinohara on 2020/06/15.
 //  Copyright © 2020 Yuki Shinohara. All rights reserved.
-//
+///ListViewに画面遷移後当日のtableviewが空っぽ問題
 
 import UIKit
-import FSCalendar
 import RealmSwift
 
-class ViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate, FSCalendarDelegate, FSCalendarDataSource {
+class ViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate {
+   
     @IBOutlet var titleTextField: UITextField!
     @IBOutlet var detailTextField: UITextView!
-    @IBOutlet var calendar: FSCalendar!
-    
+    @IBOutlet var datePicker: UIDatePicker!
     @IBOutlet var saveButton: UIButton!
     var dateString = ""
     
@@ -22,22 +21,25 @@ class ViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate,
         super.viewDidLoad()
         let config = Realm.Configuration(schemaVersion: 1)
         Realm.Configuration.defaultConfiguration = config
+     // print(Realm.Configuration.defaultConfiguration.fileURL!)
         
-//        print(Realm.Configuration.defaultConfiguration.fileURL!)
+        datePicker.datePickerMode = .date
+        
         detailTextField.text = "勉強したことを記入してください"
         detailTextField.textColor = UIColor.lightGray
         detailTextField.returnKeyType = .done
         detailTextField.delegate = self
         titleTextField.delegate = self
         
-        calendar.delegate = self
-        calendar.dataSource = self
-        
         detailTextField.layer.borderWidth = 1.0
         detailTextField.layer.borderColor = UIColor.lightGray.cgColor
         detailTextField.layer.cornerRadius = 8.0
         
         saveButton.layer.cornerRadius = 8.0
+    }
+    
+    @IBAction func getDate(_ sender: Any) {
+        dateString = DateUtils.stringFromDate(date: datePicker.date, format: "yyyy/MM/dd")
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
@@ -113,15 +115,16 @@ class ViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate,
     
     
     
-    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        let modifiedDate = Calendar.current.date(byAdding: .hour, value: 9, to: date)!
-        
-        dateString = DateUtils.stringFromDate(date: modifiedDate, format: "yyyy/MM/dd")
-        }
+//    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+//        let modifiedDate = Calendar.current.date(byAdding: .hour, value: 9, to: date)!
+//
+//        dateString = DateUtils.stringFromDate(date: modifiedDate, format: "yyyy/MM/dd")
+//        }
     
     @IBAction func didTapBarItem(_ sender: Any) {
         guard let vc = storyboard?.instantiateViewController(identifier: "list") as? ListViewController else {return}
         navigationController?.pushViewController(vc, animated: true)
     }
+
 }
 

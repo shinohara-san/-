@@ -25,7 +25,7 @@ class DetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+//        titleLabel.attributedText = attributeString
         titleLabel.text = "科目: \(study.title)"
         dateLabel.text = "初回学習日: \(study.date)"
         detailLabel.text = "詳細: \(study.detail)"
@@ -34,5 +34,11 @@ class DetailViewController: UIViewController {
         thirdDay.text = "第三回復習日: \(study.thirdDay)"
         fourthDay.text = "第四回復習日: \(study.forthDay)"
         fifthDay.text = "第五回復習日: \(study.fifthDay)"
+    }
+    
+    func completedCheck(string: String)-> NSMutableAttributedString{
+        let attributeString =  NSMutableAttributedString(string: string)
+        attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
+        return attributeString
     }
 }

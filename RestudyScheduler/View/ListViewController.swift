@@ -11,7 +11,7 @@ import RealmSwift
 import FSCalendar
 
 class ListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, FSCalendarDelegate, FSCalendarDataSource {
-
+    
     @IBOutlet var calendar: FSCalendar!
     @IBOutlet var subjectsLabel: UILabel!
     @IBOutlet var tableView: UITableView!
@@ -32,16 +32,28 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.dataSource = self
         calendar.delegate = self
         calendar.dataSource = self
-        calendar.appearance.borderRadius = 0
+        calendar.appearance.borderRadius = 0 //資格
         
-        selectedDate = DateUtils.stringFromDate(date: Date(), format: "yyyy/MM/dd")
-        subjectsLabel.text = selectedDate
-        filterTask(for: selectedDate)
+            let today = DateUtils.stringFromDate(date: Date(), format: "yyyy/MM/dd")
+            self.subjectsLabel.text = today
+        DispatchQueue.main.async {
+            let realm = try! Realm()
+            let filteredStudyResult = realm.objects(Study.self).filter("firstDay = '\(today)' OR secondDay = '\(today)' OR thirdDay = '\(today)' OR forthDay = '\(today)' OR fifthDay = '\(today)'")
+            self.filteredStudyArray = Array(filteredStudyResult) //RealmのResultをArrayに変換
+        }
+        
+        
+//        let addBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(reload))
+//        navigationItem.rightBarButtonItem = addBarButtonItem
     }
     
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
     }
+    
+//    @objc func reload(){
+//        filterTask(for: selectedDate)
+//    }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         selectedDate = DateUtils.stringFromDate(date: date, format: "yyyy/MM/dd")
@@ -50,15 +62,10 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        let realm = try! Realm()
-//        let studies = realm.objects(Study.self)
         return filteredStudyArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let realm = try! Realm()
-//        let studies = realm.objects(Study.self)
-//        let study = studies[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = filteredStudyArray[indexPath.row].title
         cell.detailTextLabel?.text = filteredStudyArray[indexPath.row].detail
@@ -66,10 +73,8 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let realm = try! Realm()
-        let studies = realm.objects(Study.self)
-        let study = studies[indexPath.row]
         
+        let study = filteredStudyArray[indexPath.row]
         if let vc = storyboard?.instantiateViewController(withIdentifier: "detail") as? DetailViewController {
             vc.study = study
             navigationController?.pushViewController(vc, animated: true)
@@ -77,26 +82,32 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-           if editingStyle == .delete {
-
-               let realm = try! Realm()
-               let studies = realm.objects(Study.self)
-               let study = studies[indexPath.row]
-               guard let index = filteredStudyArray.firstIndex(of: study) else { return }
-               filteredStudyArray.remove(at: index)
-
-               try! realm.write({
-                   realm.delete(study)
-               })
+        if editingStyle == .delete {
             
-               calendar.reloadData()
-           }
-        
-       }
+            let realm = try! Realm()
+            let studies = realm.objects(Study.self)
+            let study = studies[indexPath.row]
+            guard let index = filteredStudyArray.firstIndex(of: study) else { return }
+            filteredStudyArray.remove(at: index)
+            
+            try! realm.write({
+                realm.delete(study)
+            })
+            
+            calendar.reloadData()
+            ///応急処置
+            let ac = UIAlertController(title: "削除しました", message: nil, preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "ok", style: .default, handler: { _ in
+                self.filterTask(for: self.selectedDate)
+            }))
+            present(ac, animated: true)
+        }
+    }
     
     func filterTask(for day: String){
         let realm = try! Realm()
-        let filteredStudyResult = realm.objects(Study.self).filter("firstDay = '\(day)' OR secondDay = '\(day)' OR thirdDay = '\(day)' OR forthDay = '\(day)' OR fifthDay = '\(day)'")
+        let filteredStudyResult = realm.objects(Study.self)
+            .filter("firstDay = '\(day)' OR secondDay = '\(day)' OR thirdDay = '\(day)' OR forthDay = '\(day)' OR fifthDay = '\(day)'")
         filteredStudyArray = Array(filteredStudyResult) //RealmのResultをArrayに変換
     }
     

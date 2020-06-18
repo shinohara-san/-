@@ -34,7 +34,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TKz-Xd-VMf">
-                                <rect key="frame" x="80" y="778" width="254" height="40"/>
+                                <rect key="frame" x="80" y="764" width="254" height="40"/>
                                 <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="DDw-xt-AJL"/>
@@ -45,31 +45,26 @@
                                     <action selector="saveButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rjB-L6-bzg"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6ge-VY-XUb" customClass="FSCalendar">
-                                <rect key="frame" x="20" y="488" width="374" height="270"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="270" id="TYk-0p-kJM"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="allowsSelection" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="allowsMultipleSelection" value="NO"/>
-                                </userDefinedRuntimeAttributes>
-                            </view>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="ADZ-Bn-cHh">
+                                <rect key="frame" x="0.0" y="508" width="414" height="216"/>
+                                <connections>
+                                    <action selector="getDate:" destination="BYZ-38-t0r" eventType="valueChanged" id="lgg-3K-uVU"/>
+                                </connections>
+                            </datePicker>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="6ge-VY-XUb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="8sf-E0-PL5"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="MmR-Ek-EKj" secondAttribute="trailing" constant="20" id="9Ca-3r-pCG"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bGE-Of-DBv" secondAttribute="trailing" constant="20" id="9kw-gj-tWH"/>
+                            <constraint firstItem="ADZ-Bn-cHh" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Aq0-Ve-zDM"/>
                             <constraint firstItem="MmR-Ek-EKj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="HRT-Dr-8mF"/>
                             <constraint firstItem="TKz-Xd-VMf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="80" id="MFr-jw-rAA"/>
-                            <constraint firstItem="6ge-VY-XUb" firstAttribute="top" secondItem="bGE-Of-DBv" secondAttribute="bottom" constant="20" id="Ohn-Ll-I0z"/>
                             <constraint firstItem="bGE-Of-DBv" firstAttribute="top" secondItem="MmR-Ek-EKj" secondAttribute="bottom" constant="20" id="QKT-Bn-Cq6"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6ge-VY-XUb" secondAttribute="trailing" constant="20" id="bDg-qm-PK7"/>
-                            <constraint firstItem="TKz-Xd-VMf" firstAttribute="top" secondItem="6ge-VY-XUb" secondAttribute="bottom" constant="20" id="dIf-Zb-DMF"/>
+                            <constraint firstItem="ADZ-Bn-cHh" firstAttribute="top" secondItem="bGE-Of-DBv" secondAttribute="bottom" constant="40" id="icO-wi-e4H"/>
                             <constraint firstItem="MmR-Ek-EKj" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="l2P-6z-EQc"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="TKz-Xd-VMf" secondAttribute="trailing" constant="80" id="l4H-MQ-Sgl"/>
+                            <constraint firstItem="TKz-Xd-VMf" firstAttribute="top" secondItem="ADZ-Bn-cHh" secondAttribute="bottom" constant="40" id="nDI-dE-2wd"/>
+                            <constraint firstItem="ADZ-Bn-cHh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="r7q-ie-ZZK"/>
                             <constraint firstItem="bGE-Of-DBv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="uEj-qy-7Uz"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -82,7 +77,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="calendar" destination="6ge-VY-XUb" id="vVY-3D-1Jk"/>
+                        <outlet property="datePicker" destination="ADZ-Bn-cHh" id="cAG-hU-4TY"/>
                         <outlet property="detailTextField" destination="bGE-Of-DBv" id="lZ4-M1-I6e"/>
                         <outlet property="saveButton" destination="TKz-Xd-VMf" id="KVB-RZ-WjX"/>
                         <outlet property="titleTextField" destination="MmR-Ek-EKj" id="sgb-eO-lQ3"/>
@@ -104,7 +99,7 @@
                                 <rect key="frame" x="0.0" y="404" width="414" height="458"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" textLabel="mtj-Yi-0or" detailTextLabel="tyV-YQ-4Ej" style="IBUITableViewCellStyleValue1" id="CyM-8K-z81">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" textLabel="mtj-Yi-0or" detailTextLabel="8EA-Jt-TwX" style="IBUITableViewCellStyleValue1" id="CyM-8K-z81">
                                         <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CyM-8K-z81" id="rTb-Ld-YMM">
@@ -118,7 +113,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tyV-YQ-4Ej">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8EA-Jt-TwX">
                                                     <rect key="frame" x="350" y="12" width="44" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
