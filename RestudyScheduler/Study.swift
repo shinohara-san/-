@@ -15,13 +15,18 @@ class Study : Object{
     @objc dynamic var title: String = ""
     @objc dynamic var date: String = ""
     @objc dynamic var detail: String = ""
+    
     @objc dynamic var firstDay: String = ""
     @objc dynamic var secondDay: String = ""
     @objc dynamic var thirdDay: String = ""
-    @objc dynamic var forthDay: String = ""
+    @objc dynamic var fourthDay: String = ""
     @objc dynamic var fifthDay: String = ""
     
-    //dayごとにboolつけて完了かまだかをtoggleさせたいなー。後々。
+    @objc dynamic var firstDayDone = false
+    @objc dynamic var secondDayDone = false
+    @objc dynamic var thirdDayDone = false
+    @objc dynamic var fourthDayDone = false
+    @objc dynamic var fifthDayDone = false
     
     override static func primaryKey() -> String? {
       return "id"

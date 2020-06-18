@@ -16,6 +16,8 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet var subjectsLabel: UILabel!
     @IBOutlet var tableView: UITableView!
     
+    var doneResult = false
+    
     var filteredStudyArray = [Study](){ //tableviewをカレンダータップごとに表示更新
         didSet {
             tableView?.reloadData()
@@ -34,26 +36,18 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         calendar.dataSource = self
         calendar.appearance.borderRadius = 0 //資格
         
-            let today = DateUtils.stringFromDate(date: Date(), format: "yyyy/MM/dd")
-            self.subjectsLabel.text = today
+        let today = DateUtils.stringFromDate(date: Date(), format: "yyyy/MM/dd")
+        self.subjectsLabel.text = today
+        
         DispatchQueue.main.async {
-            let realm = try! Realm()
-            let filteredStudyResult = realm.objects(Study.self).filter("firstDay = '\(today)' OR secondDay = '\(today)' OR thirdDay = '\(today)' OR forthDay = '\(today)' OR fifthDay = '\(today)'")
-            self.filteredStudyArray = Array(filteredStudyResult) //RealmのResultをArrayに変換
+            self.filterTask(for: today)
         }
-        
-        
-//        let addBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(reload))
-//        navigationItem.rightBarButtonItem = addBarButtonItem
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
     }
-    
-//    @objc func reload(){
-//        filterTask(for: selectedDate)
-//    }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         selectedDate = DateUtils.stringFromDate(date: date, format: "yyyy/MM/dd")
@@ -67,10 +61,30 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = filteredStudyArray[indexPath.row].title
+        
+        let mySwitch = UISwitch()
+        mySwitch.addTarget(self, action: #selector(didChangeSwitch), for: .valueChanged)
+        
+        
         cell.detailTextLabel?.text = filteredStudyArray[indexPath.row].detail
+        cell.textLabel?.text = filteredStudyArray[indexPath.row].title
+        
+//        mySwitch.isOn = filteredStudyArray[indexPath.row].firstDayDone
+        
+        
+        mySwitch.isOn = getCorrectDayDone(index: indexPath)
+        
+        cell.accessoryView = mySwitch
         return cell
     }
+    
+    @objc func didChangeSwitch(_ sender: UISwitch){
+           if sender.isOn{
+               print("completed")
+           } else {
+               print("not completed yet")
+           }
+       }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
@@ -96,7 +110,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             calendar.reloadData()
             ///応急処置
-            let ac = UIAlertController(title: "削除しました", message: nil, preferredStyle: .alert)
+            let ac = UIAlertController(title: "削除しました", message: "\(study.title)", preferredStyle: .alert)
             ac.addAction(UIAlertAction(title: "ok", style: .default, handler: { _ in
                 self.filterTask(for: self.selectedDate)
             }))
@@ -107,7 +121,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     func filterTask(for day: String){
         let realm = try! Realm()
         let filteredStudyResult = realm.objects(Study.self)
-            .filter("firstDay = '\(day)' OR secondDay = '\(day)' OR thirdDay = '\(day)' OR forthDay = '\(day)' OR fifthDay = '\(day)'")
+            .filter("firstDay = '\(day)' OR secondDay = '\(day)' OR thirdDay = '\(day)' OR fourthDay = '\(day)' OR fifthDay = '\(day)'")
         filteredStudyArray = Array(filteredStudyResult) //RealmのResultをArrayに変換
     }
     
@@ -117,4 +131,37 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         num = filteredStudyArray.count
         return num
     }
+    
+    //   selectedDateと同じものをfilteredStudyArray[indexPath.row]のfirst〜fifthの中でループして、同じだったらその名前と同じやつのdaydoneを代入
+    func getCorrectDayDone(index: IndexPath) -> Bool {
+        let task = filteredStudyArray[index.row]
+        var dayArray = [String]()
+        dayArray.append(task.firstDay)
+        dayArray.append(task.secondDay)
+        dayArray.append(task.thirdDay)
+        dayArray.append(task.fourthDay)
+        dayArray.append(task.fifthDay)
+//        print(dayArray)
+        
+        dayArray.forEach{_ in
+            if dayArray[0] == selectedDate {
+                doneResult = task.firstDayDone
+            } else if dayArray[1] == selectedDate{
+                doneResult = task.secondDayDone
+            } else if dayArray[2] == selectedDate{
+                doneResult = task.thirdDayDone
+            } else if dayArray[3] == selectedDate{
+                doneResult = task.fourthDayDone
+            } else if dayArray[4] == selectedDate{
+                doneResult = task.fifthDayDone
+            } else {
+                return
+            }
+            
+            
+        }
+        
+        return doneResult
+    }
+    
 }

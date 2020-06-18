@@ -4,7 +4,6 @@
 //
 //  Created by Yuki Shinohara on 2020/06/15.
 //  Copyright © 2020 Yuki Shinohara. All rights reserved.
-///ListViewに画面遷移後当日のtableviewが空っぽ問題
 
 import UIKit
 import RealmSwift
@@ -19,9 +18,9 @@ class ViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let config = Realm.Configuration(schemaVersion: 1)
+        let config = Realm.Configuration(schemaVersion: 3)
         Realm.Configuration.defaultConfiguration = config
-     // print(Realm.Configuration.defaultConfiguration.fileURL!)
+      print(Realm.Configuration.defaultConfiguration.fileURL!)
         
         datePicker.datePickerMode = .date
         
@@ -98,7 +97,7 @@ class ViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate 
         newStudy.firstDay = Calculate.getRestudyDay(study: newStudy, value: 1)
         newStudy.secondDay = Calculate.getRestudyDay(study: newStudy, value: 7)
         newStudy.thirdDay = Calculate.getRestudyDay(study: newStudy, value: 16)
-        newStudy.forthDay = Calculate.getRestudyDay(study: newStudy, value: 35)
+        newStudy.fourthDay = Calculate.getRestudyDay(study: newStudy, value: 35)
         newStudy.fifthDay = Calculate.getRestudyDay(study: newStudy, value: 62)
         
         

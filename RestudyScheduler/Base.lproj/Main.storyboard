@@ -176,7 +176,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="u6E-8D-w6D">
-                                <rect key="frame" x="10" y="64" width="394" height="444"/>
+                                <rect key="frame" x="10" y="64" width="394" height="496.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FoR-jK-tzr">
                                         <rect key="frame" x="0.0" y="0.0" width="394" height="20.5"/>
@@ -196,36 +196,92 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="inu-mD-FwR">
-                                        <rect key="frame" x="0.0" y="181.5" width="394" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GOI-06-c2L">
-                                        <rect key="frame" x="0.0" y="242" width="394" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VK1-lG-QNh">
-                                        <rect key="frame" x="0.0" y="302.5" width="394" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6J7-uO-vIn">
-                                        <rect key="frame" x="0.0" y="363" width="394" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="phx-FY-kaU">
-                                        <rect key="frame" x="0.0" y="423.5" width="394" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WIb-n5-4nj">
+                                        <rect key="frame" x="0.0" y="181.5" width="394" height="31"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="inu-mD-FwR">
+                                                <rect key="frame" x="0.0" y="0.0" width="345" height="31"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pg7-sM-FKl">
+                                                <rect key="frame" x="345" y="0.0" width="51" height="31"/>
+                                                <connections>
+                                                    <action selector="firstDaySwitchToggled:" destination="Le7-km-WIW" eventType="valueChanged" id="U8l-Xd-Mk2"/>
+                                                </connections>
+                                            </switch>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="raW-Ks-Crd">
+                                        <rect key="frame" x="0.0" y="252.5" width="394" height="31"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GOI-06-c2L">
+                                                <rect key="frame" x="0.0" y="0.0" width="345" height="31"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ikk-Rh-qBq">
+                                                <rect key="frame" x="345" y="0.0" width="51" height="31"/>
+                                                <connections>
+                                                    <action selector="secondDaySwitchToggled:" destination="Le7-km-WIW" eventType="valueChanged" id="TqU-EN-Mtr"/>
+                                                </connections>
+                                            </switch>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lld-3c-xLf">
+                                        <rect key="frame" x="0.0" y="323.5" width="394" height="31"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VK1-lG-QNh">
+                                                <rect key="frame" x="0.0" y="0.0" width="345" height="31"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Oo2-T5-JH2">
+                                                <rect key="frame" x="345" y="0.0" width="51" height="31"/>
+                                                <connections>
+                                                    <action selector="thirdDaySwitchToggled:" destination="Le7-km-WIW" eventType="valueChanged" id="kyy-cG-sxl"/>
+                                                </connections>
+                                            </switch>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xc2-CO-vcz">
+                                        <rect key="frame" x="0.0" y="394.5" width="394" height="31"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6J7-uO-vIn">
+                                                <rect key="frame" x="0.0" y="0.0" width="345" height="31"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Up-j5-djp">
+                                                <rect key="frame" x="345" y="0.0" width="51" height="31"/>
+                                                <connections>
+                                                    <action selector="fourthDaySwitchToggled:" destination="Le7-km-WIW" eventType="valueChanged" id="kez-M5-ATE"/>
+                                                    <action selector="thirdDaySwitchToggled:" destination="Le7-km-WIW" eventType="valueChanged" id="ld0-2P-Kds"/>
+                                                </connections>
+                                            </switch>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f8Y-7B-TjA">
+                                        <rect key="frame" x="0.0" y="465.5" width="394" height="31"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="phx-FY-kaU">
+                                                <rect key="frame" x="0.0" y="0.0" width="345" height="31"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ngn-03-dvV">
+                                                <rect key="frame" x="345" y="0.0" width="51" height="31"/>
+                                                <connections>
+                                                    <action selector="fifthDaySwitchToggled:" destination="Le7-km-WIW" eventType="valueChanged" id="K77-eY-R6O"/>
+                                                </connections>
+                                            </switch>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -241,10 +297,15 @@
                         <outlet property="dateLabel" destination="f0S-iH-F3f" id="CVl-yw-Is1"/>
                         <outlet property="detailLabel" destination="yJH-gn-gPD" id="nEN-lb-ysw"/>
                         <outlet property="fifthDay" destination="phx-FY-kaU" id="0gR-Mg-Igr"/>
+                        <outlet property="fifthDaySwitch" destination="Ngn-03-dvV" id="BHE-4p-Hfu"/>
                         <outlet property="firstDay" destination="inu-mD-FwR" id="FSj-aa-Bnc"/>
+                        <outlet property="firstDaySwitch" destination="pg7-sM-FKl" id="vpl-IH-eqt"/>
                         <outlet property="fourthDay" destination="6J7-uO-vIn" id="Wj2-Vk-82T"/>
+                        <outlet property="fourthDaySwitch" destination="9Up-j5-djp" id="T5Y-me-Wxt"/>
                         <outlet property="secondDay" destination="GOI-06-c2L" id="2fo-Rk-gyT"/>
+                        <outlet property="secondDaySwitch" destination="ikk-Rh-qBq" id="YHh-tU-ecx"/>
                         <outlet property="thirdDay" destination="VK1-lG-QNh" id="OCc-kk-j1p"/>
+                        <outlet property="thirdDaySwitch" destination="Oo2-T5-JH2" id="Xf3-hS-i6X"/>
                         <outlet property="titleLabel" destination="FoR-jK-tzr" id="abU-Nx-P5P"/>
                     </connections>
                 </viewController>
