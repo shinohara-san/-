@@ -154,10 +154,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
                 doneResult = task.fourthDayDone
             } else if dayArray[4] == selectedDate{
                 doneResult = task.fifthDayDone
-            } else {
-                return
             }
-            
             
         }
         

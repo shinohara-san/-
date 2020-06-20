@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--復習リマインダー-->
+        <!--復習しようぜ！-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="RestudyScheduler" customModuleProvider="target" sceneMemberID="viewController">
@@ -69,7 +69,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="復習リマインダー" id="4Nh-Tz-cSh">
+                    <navigationItem key="navigationItem" title="復習しようぜ！" id="4Nh-Tz-cSh">
                         <barButtonItem key="rightBarButtonItem" systemItem="bookmarks" id="y2L-cD-A8q">
                             <connections>
                                 <action selector="didTapBarItem:" destination="BYZ-38-t0r" id="uiN-gK-IJA"/>
