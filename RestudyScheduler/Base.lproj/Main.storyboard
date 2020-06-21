@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xsk-0W-rDe">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="J8N-jI-SAG">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
@@ -10,7 +10,7 @@
         <!--復習しようぜ！-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="RestudyScheduler" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="InputViewController" customModule="RestudyScheduler" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -42,13 +42,13 @@
                                 <color key="tintColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="登録"/>
                                 <connections>
-                                    <action selector="saveButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rjB-L6-bzg"/>
+                                    <action selector="saveButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YKd-rL-50i"/>
                                 </connections>
                             </button>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="ADZ-Bn-cHh">
                                 <rect key="frame" x="0.0" y="508" width="414" height="216"/>
                                 <connections>
-                                    <action selector="getDate:" destination="BYZ-38-t0r" eventType="valueChanged" id="lgg-3K-uVU"/>
+                                    <action selector="getDate:" destination="BYZ-38-t0r" eventType="valueChanged" id="zwr-zJ-QZf"/>
                                 </connections>
                             </datePicker>
                         </subviews>
@@ -72,20 +72,20 @@
                     <navigationItem key="navigationItem" title="復習しようぜ！" id="4Nh-Tz-cSh">
                         <barButtonItem key="rightBarButtonItem" systemItem="bookmarks" id="y2L-cD-A8q">
                             <connections>
-                                <action selector="didTapBarItem:" destination="BYZ-38-t0r" id="uiN-gK-IJA"/>
+                                <action selector="didTapBarItem:" destination="BYZ-38-t0r" id="5gd-Ln-Hrh"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="datePicker" destination="ADZ-Bn-cHh" id="cAG-hU-4TY"/>
-                        <outlet property="detailTextField" destination="bGE-Of-DBv" id="lZ4-M1-I6e"/>
-                        <outlet property="saveButton" destination="TKz-Xd-VMf" id="KVB-RZ-WjX"/>
-                        <outlet property="titleTextField" destination="MmR-Ek-EKj" id="sgb-eO-lQ3"/>
+                        <outlet property="datePicker" destination="ADZ-Bn-cHh" id="Gqn-bI-gyh"/>
+                        <outlet property="detailTextField" destination="bGE-Of-DBv" id="fzM-mC-c3u"/>
+                        <outlet property="saveButton" destination="TKz-Xd-VMf" id="lGb-ee-VLS"/>
+                        <outlet property="titleTextField" destination="MmR-Ek-EKj" id="BbE-0v-w8C"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1047.8260869565217" y="129.91071428571428"/>
+            <point key="canvasLocation" x="1957.9710144927537" y="129.91071428571428"/>
         </scene>
         <!--List View Controller-->
         <scene sceneID="2sK-Yn-fTu">
@@ -165,7 +165,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YG9-MQ-Sjq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1805.7971014492755" y="128.57142857142856"/>
+            <point key="canvasLocation" x="2715.9420289855075" y="128.57142857142856"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="LhL-9f-l1C">
@@ -311,25 +311,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rh5-qe-A91" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2629" y="130"/>
+            <point key="canvasLocation" x="3539.130434782609" y="129.91071428571428"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="LQh-QM-BW0">
+        <scene sceneID="DIs-Ng-P3r">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xsk-0W-rDe" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="J8N-jI-SAG" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ieL-i1-6qj">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="mpm-J0-wIy">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="QrQ-gC-nLn"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="ZCS-L6-EZC"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="A1H-Hv-vUj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Eze-Pi-rM3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137.68115942028987" y="129.91071428571428"/>
+            <point key="canvasLocation" x="1047.8260869565217" y="129.91071428571428"/>
         </scene>
     </scenes>
 </document>

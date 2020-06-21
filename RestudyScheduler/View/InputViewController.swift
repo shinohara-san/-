@@ -1,33 +1,37 @@
 //
-//  ViewController.swift
+//  InputViewController.swift
 //  RestudyScheduler
 //
-//  Created by Yuki Shinohara on 2020/06/15.
+//  Created by Yuki Shinohara on 2020/06/21.
 //  Copyright © 2020 Yuki Shinohara. All rights reserved.
+//
 
 import UIKit
 import RealmSwift
 import UserNotifications
 
-class ViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate {
+class InputViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate {
     
     @IBOutlet var titleTextField: UITextField!
     @IBOutlet var detailTextField: UITextView!
     @IBOutlet var datePicker: UIDatePicker!
     @IBOutlet var saveButton: UIButton!
+    
     var dateString = ""
+    var studyArrayForNotification = [Study]()
+    var tomorrow:Date?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (success, error) in
-            ///Result型使えそう
             if success {
-                print("success")
+//                print("success")
             }else if let error = error{
                 print(error.localizedDescription)
             }
         }
+        
         
         let config = Realm.Configuration(schemaVersion: 3)
         Realm.Configuration.defaultConfiguration = config
@@ -46,6 +50,29 @@ class ViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate 
         detailTextField.layer.cornerRadius = 8.0
         
         saveButton.layer.cornerRadius = 8.0
+        
+        checkRealm()
+        if studyArrayForNotification.isEmpty{
+            print("no study tmr")
+        } else {
+//            print("you have study plans")
+            let content = UNMutableNotificationContent()
+            content.title = "復習しましょう"
+            content.sound = .default
+            content.body = "今日は\(String(studyArrayForNotification.count))科目！"
+            
+            guard let targetDate = tomorrow else { return }//当日とdbから引っ張ってきた日付が一致したら発動
+            let trigger = UNCalendarNotificationTrigger(dateMatching: Calendar.current.dateComponents([.year,.month,.day,.hour,.minute,.second], from: targetDate), repeats: false)
+            let request = UNNotificationRequest(identifier: "some_long_id", content: content, trigger: trigger)
+            UNUserNotificationCenter.current().add(request, withCompletionHandler: {
+                error in
+                if error != nil{
+                    print(error?.localizedDescription as Any)
+                }
+                //エラーがなければrequestが通る
+            })
+            
+        }
     }
     
     @IBAction func getDate(_ sender: Any) {
@@ -97,7 +124,6 @@ class ViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate 
         }
         
         if dateString == ""{
-            ///Stringにする前に年月日を通知インスタンスに入れたい
             dateString = DateUtils.stringFromDate(date: Date(), format: "yyyy/MM/dd")
         }
         
@@ -132,10 +158,26 @@ class ViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate 
     //        dateString = DateUtils.stringFromDate(date: modifiedDate, format: "yyyy/MM/dd")
     //        }
     
+    
     @IBAction func didTapBarItem(_ sender: Any) {
         guard let vc = storyboard?.instantiateViewController(identifier: "list") as? ListViewController else {return}
         navigationController?.pushViewController(vc, animated: true)
     }
     
+    func checkRealm(){
+        let realm = try! Realm()
+        let today = Date()
+        let comps = DateComponents(day: 1, hour: 9)
+        tomorrow = Calendar.current.date(byAdding: comps, to: today)
+        guard let checkedTmr = tomorrow else { return }
+        let adjustedTmr = Calendar.current.date(byAdding: .day, value: -1, to: checkedTmr)
+        let tomorrowString = DateUtils.stringFromDate(date: adjustedTmr!, format: "yyyy/MM/dd") //-1日したい
+        let studies = realm.objects(Study.self).filter("firstDay = '\(tomorrowString)' OR secondDay = '\(tomorrowString)' OR thirdDay = '\(tomorrowString)' OR fourthDay = '\(tomorrowString)' OR fifthDay = '\(tomorrowString)'")
+//        print(studies)
+        studyArrayForNotification = Array(studies) //RealmのResultをArrayに変換
+        print(adjustedTmr!)
+        print(tomorrowString)
+//        print(studyArrayForNotification)
+    }
+    
 }
-
