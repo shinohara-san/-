@@ -84,7 +84,7 @@ class DetailViewController: UIViewController {
         }
     }
     
-    
+    ///全部trueでアニメーション
     //    func completedCheck(string: String)-> NSMutableAttributedString{
     //        let attributeString =  NSMutableAttributedString(string: string)
     //        attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))

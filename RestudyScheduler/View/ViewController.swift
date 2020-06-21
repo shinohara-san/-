@@ -7,9 +7,10 @@
 
 import UIKit
 import RealmSwift
+import UserNotifications
 
 class ViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate {
-   
+    
     @IBOutlet var titleTextField: UITextField!
     @IBOutlet var detailTextField: UITextView!
     @IBOutlet var datePicker: UIDatePicker!
@@ -18,9 +19,19 @@ class ViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (success, error) in
+            ///Result型使えそう
+            if success {
+                print("success")
+            }else if let error = error{
+                print(error.localizedDescription)
+            }
+        }
+        
         let config = Realm.Configuration(schemaVersion: 3)
         Realm.Configuration.defaultConfiguration = config
-      print(Realm.Configuration.defaultConfiguration.fileURL!)
+        //      print(Realm.Configuration.defaultConfiguration.fileURL!)
         
         datePicker.datePickerMode = .date
         
@@ -69,7 +80,7 @@ class ViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate 
         textField.resignFirstResponder()
         return true
     }
-
+    
     @IBAction func saveButtonTapped(_ sender: Any) {
         
         guard let title = titleTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines),
@@ -86,9 +97,10 @@ class ViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate 
         }
         
         if dateString == ""{
+            ///Stringにする前に年月日を通知インスタンスに入れたい
             dateString = DateUtils.stringFromDate(date: Date(), format: "yyyy/MM/dd")
         }
-      
+        
         let newStudy = Study()
         newStudy.id = UUID().uuidString
         newStudy.title = title
@@ -114,16 +126,16 @@ class ViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate 
     
     
     
-//    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-//        let modifiedDate = Calendar.current.date(byAdding: .hour, value: 9, to: date)!
-//
-//        dateString = DateUtils.stringFromDate(date: modifiedDate, format: "yyyy/MM/dd")
-//        }
+    //    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+    //        let modifiedDate = Calendar.current.date(byAdding: .hour, value: 9, to: date)!
+    //
+    //        dateString = DateUtils.stringFromDate(date: modifiedDate, format: "yyyy/MM/dd")
+    //        }
     
     @IBAction func didTapBarItem(_ sender: Any) {
         guard let vc = storyboard?.instantiateViewController(identifier: "list") as? ListViewController else {return}
         navigationController?.pushViewController(vc, animated: true)
     }
-
+    
 }
 

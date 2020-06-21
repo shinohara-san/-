@@ -42,7 +42,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         DispatchQueue.main.async {
             self.filterTask(for: today)
         }
-
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -61,30 +61,40 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let study = filteredStudyArray[indexPath.row]
+        cell.textLabel?.text = study.title
         
-        let mySwitch = UISwitch()
-        mySwitch.addTarget(self, action: #selector(didChangeSwitch), for: .valueChanged)
+        switch selectedDate {
+        case study.firstDay:
+            cell.detailTextLabel?.text = "第1回目"
+        case study.secondDay:
+            cell.detailTextLabel?.text = "第2回目"
+        case study.thirdDay:
+            cell.detailTextLabel?.text = "第3回目"
+        case study.fourthDay:
+            cell.detailTextLabel?.text = "第4回目"
+        case study.fifthDay:
+            cell.detailTextLabel?.text = "第5回目"
+        default:
+            cell.detailTextLabel?.text = ""
+        }
         
         
-        cell.detailTextLabel?.text = filteredStudyArray[indexPath.row].detail
-        cell.textLabel?.text = filteredStudyArray[indexPath.row].title
+        //        let mySwitch = UISwitch()
+        //        mySwitch.addTarget(self, action: #selector(didChangeSwitch), for: .valueChanged)
+        //        mySwitch.isOn = getCorrectDayDone(index: indexPath)
+        //        cell.accessoryView = mySwitch
         
-//        mySwitch.isOn = filteredStudyArray[indexPath.row].firstDayDone
-        
-        
-        mySwitch.isOn = getCorrectDayDone(index: indexPath)
-        
-        cell.accessoryView = mySwitch
         return cell
     }
     
-    @objc func didChangeSwitch(_ sender: UISwitch){
-           if sender.isOn{
-               print("completed")
-           } else {
-               print("not completed yet")
-           }
-       }
+    //    @objc func didChangeSwitch(_ sender: UISwitch){
+    //           if sender.isOn{
+    //               print("completed")
+    //           } else {
+    //               print("not completed yet")
+    //           }
+    //       }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
@@ -104,17 +114,16 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
             guard let index = filteredStudyArray.firstIndex(of: study) else { return }
             filteredStudyArray.remove(at: index)
             
-            try! realm.write({
-                realm.delete(study)
-            })
-            
-            calendar.reloadData()
-            ///応急処置
             let ac = UIAlertController(title: "削除しました", message: "\(study.title)", preferredStyle: .alert)
             ac.addAction(UIAlertAction(title: "ok", style: .default, handler: { _ in
                 self.filterTask(for: self.selectedDate)
             }))
             present(ac, animated: true)
+            
+            try! realm.write({
+                realm.delete(study)
+            })
+            calendar.reloadData()
         }
     }
     
@@ -133,32 +142,32 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     //   selectedDateと同じものをfilteredStudyArray[indexPath.row]のfirst〜fifthの中でループして、同じだったらその名前と同じやつのdaydoneを代入
-    func getCorrectDayDone(index: IndexPath) -> Bool {
-        let task = filteredStudyArray[index.row]
-        var dayArray = [String]()
-        dayArray.append(task.firstDay)
-        dayArray.append(task.secondDay)
-        dayArray.append(task.thirdDay)
-        dayArray.append(task.fourthDay)
-        dayArray.append(task.fifthDay)
-//        print(dayArray)
-        
-        dayArray.forEach{_ in
-            if dayArray[0] == selectedDate {
-                doneResult = task.firstDayDone
-            } else if dayArray[1] == selectedDate{
-                doneResult = task.secondDayDone
-            } else if dayArray[2] == selectedDate{
-                doneResult = task.thirdDayDone
-            } else if dayArray[3] == selectedDate{
-                doneResult = task.fourthDayDone
-            } else if dayArray[4] == selectedDate{
-                doneResult = task.fifthDayDone
-            }
-            
-        }
-        
-        return doneResult
-    }
+    //    func getCorrectDayDone(index: IndexPath) -> Bool {
+    //        let task = filteredStudyArray[index.row]
+    //        var dayArray = [String]()
+    //        dayArray.append(task.firstDay)
+    //        dayArray.append(task.secondDay)
+    //        dayArray.append(task.thirdDay)
+    //        dayArray.append(task.fourthDay)
+    //        dayArray.append(task.fifthDay)
+    //        print(dayArray)
+    //
+    //        dayArray.forEach{_ in
+    //            if dayArray[0] == selectedDate {
+    //                doneResult = task.firstDayDone
+    //            } else if dayArray[1] == selectedDate{
+    //                doneResult = task.secondDayDone
+    //            } else if dayArray[2] == selectedDate{
+    //                doneResult = task.thirdDayDone
+    //            } else if dayArray[3] == selectedDate{
+    //                doneResult = task.fourthDayDone
+    //            } else if dayArray[4] == selectedDate{
+    //                doneResult = task.fifthDayDone
+    //            }
+    //
+    //        }
+    //
+    //        return doneResult
+    //    }
     
 }
