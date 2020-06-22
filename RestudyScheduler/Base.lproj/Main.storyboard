@@ -260,7 +260,6 @@
                                                 <rect key="frame" x="345" y="0.0" width="51" height="31"/>
                                                 <connections>
                                                     <action selector="fourthDaySwitchToggled:" destination="Le7-km-WIW" eventType="valueChanged" id="kez-M5-ATE"/>
-                                                    <action selector="thirdDaySwitchToggled:" destination="Le7-km-WIW" eventType="valueChanged" id="ld0-2P-Kds"/>
                                                 </connections>
                                             </switch>
                                         </subviews>

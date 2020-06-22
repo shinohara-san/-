@@ -23,56 +23,34 @@ class InputViewController: UIViewController, UITextViewDelegate, UITextFieldDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let config = Realm.Configuration(schemaVersion: 3)
+        Realm.Configuration.defaultConfiguration = config
+        //        print(Realm.Configuration.defaultConfiguration.fileURL!)
+        
+        detailTextField.returnKeyType = .done
+        detailTextField.delegate = self
+        titleTextField.delegate = self
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (success, error) in
             if success {
-//                print("success")
+                print("permission granted")
             }else if let error = error{
                 print(error.localizedDescription)
             }
         }
         
+//        setNotification()
         
-        let config = Realm.Configuration(schemaVersion: 3)
-        Realm.Configuration.defaultConfiguration = config
-        //      print(Realm.Configuration.defaultConfiguration.fileURL!)
-        
-        datePicker.datePickerMode = .date
-        
-        detailTextField.text = "勉強したことを記入してください"
-        detailTextField.textColor = UIColor.lightGray
-        detailTextField.returnKeyType = .done
-        detailTextField.delegate = self
-        titleTextField.delegate = self
-        
-        detailTextField.layer.borderWidth = 1.0
-        detailTextField.layer.borderColor = UIColor.lightGray.cgColor
-        detailTextField.layer.cornerRadius = 8.0
-        
-        saveButton.layer.cornerRadius = 8.0
-        
-        checkRealm()
-        if studyArrayForNotification.isEmpty{
-            print("no study tmr")
-        } else {
-//            print("you have study plans")
-            let content = UNMutableNotificationContent()
-            content.title = "復習しましょう"
-            content.sound = .default
-            content.body = "今日は\(String(studyArrayForNotification.count))科目！"
-            
-            guard let targetDate = tomorrow else { return }//当日とdbから引っ張ってきた日付が一致したら発動
-            let trigger = UNCalendarNotificationTrigger(dateMatching: Calendar.current.dateComponents([.year,.month,.day,.hour,.minute,.second], from: targetDate), repeats: false)
-            let request = UNNotificationRequest(identifier: "some_long_id", content: content, trigger: trigger)
-            UNUserNotificationCenter.current().add(request, withCompletionHandler: {
-                error in
-                if error != nil{
-                    print(error?.localizedDescription as Any)
-                }
-                //エラーがなければrequestが通る
-            })
-            
+        DispatchQueue.main.async { [weak self] in
+            self?.datePicker.datePickerMode = .date
+            self?.detailTextField.text = "勉強したことを記入してください"
+            self?.detailTextField.textColor = UIColor.lightGray
+            self?.detailTextField.layer.borderWidth = 1.0
+            self?.detailTextField.layer.borderColor = UIColor.lightGray.cgColor
+            self?.detailTextField.layer.cornerRadius = 8.0
+            self?.saveButton.layer.cornerRadius = 8.0
         }
+        
     }
     
     @IBAction func getDate(_ sender: Any) {
@@ -109,7 +87,7 @@ class InputViewController: UIViewController, UITextViewDelegate, UITextFieldDele
     }
     
     @IBAction func saveButtonTapped(_ sender: Any) {
-        
+        ///翌日の通知をここで設定？
         guard let title = titleTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines),
             var detail = detailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
         
@@ -173,11 +151,46 @@ class InputViewController: UIViewController, UITextViewDelegate, UITextFieldDele
         let adjustedTmr = Calendar.current.date(byAdding: .day, value: -1, to: checkedTmr)
         let tomorrowString = DateUtils.stringFromDate(date: adjustedTmr!, format: "yyyy/MM/dd") //-1日したい
         let studies = realm.objects(Study.self).filter("firstDay = '\(tomorrowString)' OR secondDay = '\(tomorrowString)' OR thirdDay = '\(tomorrowString)' OR fourthDay = '\(tomorrowString)' OR fifthDay = '\(tomorrowString)'")
-//        print(studies)
+        //        print(studies)
         studyArrayForNotification = Array(studies) //RealmのResultをArrayに変換
         print(adjustedTmr!)
         print(tomorrowString)
-//        print(studyArrayForNotification)
+        //        print(studyArrayForNotification)
+    }
+    
+    func setNotification(){
+        //通知の処理
+        self.checkRealm()
+        if self.studyArrayForNotification.isEmpty{
+            print("no study tmr")
+        } else {
+            print("you have study plans")
+            let content = UNMutableNotificationContent()
+            content.title = "復習しましょう"
+            content.sound = .default
+            content.body = "今日は\(String(self.studyArrayForNotification.count))科目！"
+            
+            let today = Date()
+            let comps = DateComponents(day: 0, second: 10)
+            let targetDate = Calendar.current.date(byAdding: comps, to: today)!
+            
+            let identifier = DateUtils.stringFromDate(date: targetDate, format: "yMdkHms")
+            
+            let trigger = UNCalendarNotificationTrigger(dateMatching: Calendar.current.dateComponents([.year,.month,.day,.hour,.minute,.second], from: targetDate), repeats: false)
+            print(trigger)
+            ///identifierを変えないと上書き
+            
+            let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
+            
+            UNUserNotificationCenter.current().add(request, withCompletionHandler: {
+                error in
+                if error != nil{
+                    print(error?.localizedDescription as Any)
+                }
+                //エラーがなければrequestが通る
+            })
+            
+        }
     }
     
 }

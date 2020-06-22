@@ -17,6 +17,8 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet var tableView: UITableView!
     
     var doneResult = false
+    var label = ""
+    var study: Study!
     
     var filteredStudyArray = [Study](){ //tableviewをカレンダータップごとに表示更新
         didSet {
@@ -34,17 +36,17 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.dataSource = self
         calendar.delegate = self
         calendar.dataSource = self
-        calendar.appearance.borderRadius = 0 //資格
         
         let today = DateUtils.stringFromDate(date: Date(), format: "yyyy/MM/dd")
-        self.subjectsLabel.text = today
         
-        DispatchQueue.main.async {
-            self.filterTask(for: today)
+        DispatchQueue.main.async { [weak self] in
+            self?.subjectsLabel.text = today
+            self?.filterTask(for: today)
+            self?.calendar.appearance.borderRadius = 0 //四角
+            
         }
-        
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
     }
@@ -62,39 +64,32 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         let study = filteredStudyArray[indexPath.row]
+//        print(study.firstDay)
+        
         cell.textLabel?.text = study.title
+        cell.detailTextLabel?.text = study.detail
         
-        switch selectedDate {
-        case study.firstDay:
-            cell.detailTextLabel?.text = "第1回目"
-        case study.secondDay:
-            cell.detailTextLabel?.text = "第2回目"
-        case study.thirdDay:
-            cell.detailTextLabel?.text = "第3回目"
-        case study.fourthDay:
-            cell.detailTextLabel?.text = "第4回目"
-        case study.fifthDay:
-            cell.detailTextLabel?.text = "第5回目"
-        default:
-            cell.detailTextLabel?.text = ""
-        }
-        
-        
-        //        let mySwitch = UISwitch()
-        //        mySwitch.addTarget(self, action: #selector(didChangeSwitch), for: .valueChanged)
-        //        mySwitch.isOn = getCorrectDayDone(index: indexPath)
-        //        cell.accessoryView = mySwitch
+//        DispatchQueue.main.async {
+//        switch self.selectedDate {
+//        case study.firstDay:
+//            self.label = "第1回目"
+//        case study.secondDay:
+//            self.label = "第2回目"
+//        case study.thirdDay:
+//            self.label = "第3回目"
+//        case study.fourthDay:
+//            self.label = "第4回目"
+//        case study.fifthDay:
+//            self.label = "第5回目"
+//        default:
+//            self.label = ""
+//        }
+//            cell.detailTextLabel?.text = self.label
+//        tableView.reloadData()
+//        }
         
         return cell
     }
-    
-    //    @objc func didChangeSwitch(_ sender: UISwitch){
-    //           if sender.isOn{
-    //               print("completed")
-    //           } else {
-    //               print("not completed yet")
-    //           }
-    //       }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
@@ -107,23 +102,24 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            
             let realm = try! Realm()
-            let studies = realm.objects(Study.self)
-            let study = studies[indexPath.row]
-            guard let index = filteredStudyArray.firstIndex(of: study) else { return }
-            filteredStudyArray.remove(at: index)
+             let studies = realm.objects(Study.self)
+             let study = studies[indexPath.row]
+             guard let index = filteredStudyArray.firstIndex(of: study) else { return }
+             filteredStudyArray.remove(at: index)
+             
+             let ac = UIAlertController(title: "削除しました", message: "\(study.title)", preferredStyle: .alert)
+             ac.addAction(UIAlertAction(title: "ok", style: .default, handler: { _ in
+                 self.filterTask(for: self.selectedDate)
+             }))
+             present(ac, animated: true)
+             
+             try! realm.write({
+                 realm.delete(study)
+             })
             
-            let ac = UIAlertController(title: "削除しました", message: "\(study.title)", preferredStyle: .alert)
-            ac.addAction(UIAlertAction(title: "ok", style: .default, handler: { _ in
-                self.filterTask(for: self.selectedDate)
-            }))
-            present(ac, animated: true)
+             calendar.reloadData()
             
-            try! realm.write({
-                realm.delete(study)
-            })
-            calendar.reloadData()
         }
     }
     
@@ -132,6 +128,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         let filteredStudyResult = realm.objects(Study.self)
             .filter("firstDay = '\(day)' OR secondDay = '\(day)' OR thirdDay = '\(day)' OR fourthDay = '\(day)' OR fifthDay = '\(day)'")
         filteredStudyArray = Array(filteredStudyResult) //RealmのResultをArrayに変換
+        
     }
     
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int{
@@ -140,34 +137,5 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         num = filteredStudyArray.count
         return num
     }
-    
-    //   selectedDateと同じものをfilteredStudyArray[indexPath.row]のfirst〜fifthの中でループして、同じだったらその名前と同じやつのdaydoneを代入
-    //    func getCorrectDayDone(index: IndexPath) -> Bool {
-    //        let task = filteredStudyArray[index.row]
-    //        var dayArray = [String]()
-    //        dayArray.append(task.firstDay)
-    //        dayArray.append(task.secondDay)
-    //        dayArray.append(task.thirdDay)
-    //        dayArray.append(task.fourthDay)
-    //        dayArray.append(task.fifthDay)
-    //        print(dayArray)
-    //
-    //        dayArray.forEach{_ in
-    //            if dayArray[0] == selectedDate {
-    //                doneResult = task.firstDayDone
-    //            } else if dayArray[1] == selectedDate{
-    //                doneResult = task.secondDayDone
-    //            } else if dayArray[2] == selectedDate{
-    //                doneResult = task.thirdDayDone
-    //            } else if dayArray[3] == selectedDate{
-    //                doneResult = task.fourthDayDone
-    //            } else if dayArray[4] == selectedDate{
-    //                doneResult = task.fifthDayDone
-    //            }
-    //
-    //        }
-    //
-    //        return doneResult
-    //    }
     
 }

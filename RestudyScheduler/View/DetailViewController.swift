@@ -32,20 +32,26 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //        titleLabel.attributedText = attributeString 取り消し線引くならこれ使う
-        titleLabel.text = "科目: \(study.title)"
-        dateLabel.text = "初回学習日: \(study.date)"
-        detailLabel.text = "詳細: \(study.detail)"
-        firstDay.text = "第一回復習日: \(study.firstDay)"
-        secondDay.text = "第二回復習日: \(study.secondDay)"
-        thirdDay.text = "第三回復習日: \(study.thirdDay)"
-        fourthDay.text = "第四回復習日: \(study.fourthDay)"
-        fifthDay.text = "第五回復習日: \(study.fifthDay)"
+        DispatchQueue.main.async { [weak self] in
+            
+            self?.titleLabel.text = "科目: \(self?.study.title ?? "")"
+            self?.dateLabel.text = "初回学習日: \(self?.study.date ?? "")"
+            self?.detailLabel.text = "詳細: \(self?.study.detail ?? "")"
+            self?.firstDay.text = "第1回復習日: \(self?.study.firstDay ?? "")"
+            self?.secondDay.text = "第2回復習日: \(self?.study.secondDay ?? "")"
+            self?.thirdDay.text = "第3回復習日: \(self?.study.thirdDay ?? "")"
+            self?.fourthDay.text = "第4回復習日: \(self?.study.fourthDay ?? "")"
+            self?.fifthDay.text = "第5回復習日: \(self?.study.fifthDay ?? "")"
+            
+        }
         
-        firstDaySwitch.isOn = study.firstDayDone
-        secondDaySwitch.isOn = study.secondDayDone
-        thirdDaySwitch.isOn = study.thirdDayDone
-        fourthDaySwitch.isOn = study.fourthDayDone
-        fifthDaySwitch.isOn = study.fifthDayDone
+        DispatchQueue.main.async {
+            self.firstDaySwitch.isOn = self.study.firstDayDone
+            self.secondDaySwitch.isOn = self.study.secondDayDone
+            self.thirdDaySwitch.isOn = self.study.thirdDayDone
+            self.fourthDaySwitch.isOn = self.study.fourthDayDone
+            self.fifthDaySwitch.isOn = self.study.fifthDayDone
+        }
     }
     
     @IBAction func firstDaySwitchToggled(_ sender: Any) {
@@ -54,6 +60,7 @@ class DetailViewController: UIViewController {
         try! realm.write {
             updatedStudy.firstDayDone = study.firstDayDone ? false : true
         }
+        checkAllTrue()
     }
     @IBAction func secondDaySwitchToggled(_ sender: Any) {
         let realm = try! Realm()
@@ -61,13 +68,15 @@ class DetailViewController: UIViewController {
         try! realm.write {
             updatedStudy.secondDayDone = study.secondDayDone ? false : true
         }
+        checkAllTrue()
     }
     @IBAction func thirdDaySwitchToggled(_ sender: Any) {
-        let realm = try! Realm()
+       let realm = try! Realm()
         guard let updatedStudy = realm.objects(Study.self).filter("id = '\(study.id)'").first else {return}
         try! realm.write {
             updatedStudy.thirdDayDone = study.thirdDayDone ? false : true
         }
+        checkAllTrue()
     }
     @IBAction func fourthDaySwitchToggled(_ sender: Any) {
         let realm = try! Realm()
@@ -75,12 +84,23 @@ class DetailViewController: UIViewController {
         try! realm.write {
             updatedStudy.fourthDayDone = study.fourthDayDone ? false : true
         }
+        checkAllTrue()
     }
     @IBAction func fifthDaySwitchToggled(_ sender: Any) {
         let realm = try! Realm()
         guard let updatedStudy = realm.objects(Study.self).filter("id = '\(study.id)'").first else {return}
         try! realm.write {
             updatedStudy.fifthDayDone = study.fifthDayDone ? false : true
+        }
+        checkAllTrue()
+    }
+    
+    func checkAllTrue(){
+        if study.firstDayDone == true, study.secondDayDone == true, study.thirdDayDone == true, study.fourthDayDone == true, study.fifthDayDone == true{ 
+            let ac = UIAlertController(title: "復習完了！", message: "お疲れ様でした。", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            present(ac, animated: true)
+            self.navigationController?.popViewController(animated: true)
         }
     }
     

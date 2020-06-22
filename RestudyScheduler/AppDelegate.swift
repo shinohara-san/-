@@ -7,11 +7,10 @@
 //
 
 import UIKit
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -30,6 +29,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the user discards a scene session.
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
+    }
+    
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        //　通知設定に必要なクラスをインスタンス化
+        let trigger: UNNotificationTrigger
+        let content = UNMutableNotificationContent()
+//        var notificationTime = DateComponents()
+
+        // トリガー設定
+//        notificationTime.hour = 16
+//        notificationTime.minute = 6
+//        trigger = UNCalendarNotificationTrigger(dateMatching: notificationTime, repeats: false)
+        trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
+        // 通知内容の設定
+        content.title = "あああ"
+        content.body = "食事の時間になりました！"
+        content.sound = .default
+
+        // 通知スタイルを指定
+        let request = UNNotificationRequest(identifier: "uuid", content: content, trigger: trigger)
+        // 通知をセット
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
 
 
