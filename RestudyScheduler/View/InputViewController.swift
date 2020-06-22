@@ -23,26 +23,14 @@ class InputViewController: UIViewController, UITextViewDelegate, UITextFieldDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let config = Realm.Configuration(schemaVersion: 3)
-        Realm.Configuration.defaultConfiguration = config
-        //        print(Realm.Configuration.defaultConfiguration.fileURL!)
         
         detailTextField.returnKeyType = .done
+        datePicker.datePickerMode = .date
         detailTextField.delegate = self
         titleTextField.delegate = self
         
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (success, error) in
-            if success {
-                print("permission granted")
-            }else if let error = error{
-                print(error.localizedDescription)
-            }
-        }
-        
-//        setNotification()
-        
         DispatchQueue.main.async { [weak self] in
-            self?.datePicker.datePickerMode = .date
+            
             self?.detailTextField.text = "勉強したことを記入してください"
             self?.detailTextField.textColor = UIColor.lightGray
             self?.detailTextField.layer.borderWidth = 1.0
@@ -87,7 +75,6 @@ class InputViewController: UIViewController, UITextViewDelegate, UITextFieldDele
     }
     
     @IBAction func saveButtonTapped(_ sender: Any) {
-        ///翌日の通知をここで設定？
         guard let title = titleTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines),
             var detail = detailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
         
@@ -127,15 +114,6 @@ class InputViewController: UIViewController, UITextViewDelegate, UITextFieldDele
         detailTextField.textColor = UIColor.lightGray
         
     }
-    
-    
-    
-    //    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-    //        let modifiedDate = Calendar.current.date(byAdding: .hour, value: 9, to: date)!
-    //
-    //        dateString = DateUtils.stringFromDate(date: modifiedDate, format: "yyyy/MM/dd")
-    //        }
-    
     
     @IBAction func didTapBarItem(_ sender: Any) {
         guard let vc = storyboard?.instantiateViewController(identifier: "list") as? ListViewController else {return}
@@ -191,6 +169,6 @@ class InputViewController: UIViewController, UITextViewDelegate, UITextFieldDele
             })
             
         }
-    }
+    }//ここまで
     
 }
