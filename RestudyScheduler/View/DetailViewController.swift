@@ -98,16 +98,12 @@ class DetailViewController: UIViewController {
     func checkAllTrue(){
         if study.firstDayDone == true, study.secondDayDone == true, study.thirdDayDone == true, study.fourthDayDone == true, study.fifthDayDone == true{ 
             let ac = UIAlertController(title: "復習完了！", message: "お疲れ様でした。", preferredStyle: .alert)
-            ac.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            ac.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
+                self.navigationController?.popViewController(animated: true)
+            }))
             present(ac, animated: true)
-            self.navigationController?.popViewController(animated: true)
+            
         }
     }
-    
-    ///全部trueでアニメーション
-    //    func completedCheck(string: String)-> NSMutableAttributedString{
-    //        let attributeString =  NSMutableAttributedString(string: string)
-    //        attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
-    //        return attributeString
-    //    }
+
 }
