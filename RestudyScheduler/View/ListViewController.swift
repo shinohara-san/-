@@ -41,9 +41,10 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         DispatchQueue.main.async { [weak self] in
             self?.subjectsLabel.text = today
+//            self?.subjectsLabel.backgroundColor = UIColor(red: 240/255, green: 255/255, blue: 255/255, alpha: 1)
             self?.filterTask(for: today)
             self?.calendar.appearance.borderRadius = 0 //四角
-            
+            self?.calendar.backgroundColor = UIColor(red: 240/255, green: 255/255, blue: 255/255, alpha: 1)
         }
     }
 
@@ -65,28 +66,9 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         let study = filteredStudyArray[indexPath.row]
 //        print(study.firstDay)
-        
+        cell.contentView.backgroundColor = UIColor(red: 240/255, green: 255/255, blue: 255/255, alpha: 1)
         cell.textLabel?.text = study.title
         cell.detailTextLabel?.text = study.detail
-        
-//        DispatchQueue.main.async {
-//        switch self.selectedDate {
-//        case study.firstDay:
-//            self.label = "第1回目"
-//        case study.secondDay:
-//            self.label = "第2回目"
-//        case study.thirdDay:
-//            self.label = "第3回目"
-//        case study.fourthDay:
-//            self.label = "第4回目"
-//        case study.fifthDay:
-//            self.label = "第5回目"
-//        default:
-//            self.label = ""
-//        }
-//            cell.detailTextLabel?.text = self.label
-//        tableView.reloadData()
-//        }
         
         return cell
     }

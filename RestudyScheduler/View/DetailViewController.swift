@@ -34,7 +34,7 @@ class DetailViewController: UIViewController {
         //        titleLabel.attributedText = attributeString 取り消し線引くならこれ使う
         DispatchQueue.main.async { [weak self] in
             
-            self?.titleLabel.text = "科目: \(self?.study.title ?? "")"
+            self?.titleLabel.text = self?.study.title ?? ""
             self?.dateLabel.text = "初回学習日: \(self?.study.date ?? "")"
             self?.detailLabel.text = "詳細: \(self?.study.detail ?? "")"
             self?.firstDay.text = "第1回復習日: \(self?.study.firstDay ?? "")"

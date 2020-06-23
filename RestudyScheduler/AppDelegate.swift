@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         let config = Realm.Configuration(schemaVersion: 3)
         Realm.Configuration.defaultConfiguration = config
-//        print(Realm.Configuration.defaultConfiguration.fileURL!)
+        print(Realm.Configuration.defaultConfiguration.fileURL!)
         
         let realm = try! Realm()
         let today = Date()

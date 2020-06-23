@@ -4,7 +4,7 @@
 //
 //  Created by Yuki Shinohara on 2020/06/21.
 //  Copyright © 2020 Yuki Shinohara. All rights reserved.
-//
+///未来の日にち入力ふか
 
 import UIKit
 import RealmSwift
@@ -20,18 +20,29 @@ class InputViewController: UIViewController, UITextViewDelegate, UITextFieldDele
     var dateString = ""
     var studyArrayForNotification = [Study]()
     var tomorrow:Date?
+    var detailPlaceholder = "詳細を記入してください。"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        guard let today = Calendar.current.date(byAdding: .hour, value: 9, to: Date()) else { return }
+        let aWeekAgo = Calendar.current.date(byAdding: .day, value: -7, to: today)
+        let aWeekAhead = Calendar.current.date(byAdding: .day, value: 7, to: today)
+        
         detailTextField.returnKeyType = .done
         datePicker.datePickerMode = .date
+        datePicker.timeZone = .current
+        datePicker.minimumDate = aWeekAgo
+        datePicker.maximumDate = aWeekAhead
+        
+        print(today)
+        
         detailTextField.delegate = self
         titleTextField.delegate = self
         
         DispatchQueue.main.async { [weak self] in
             
-            self?.detailTextField.text = "勉強したことを記入してください"
+            self?.detailTextField.text = self?.detailPlaceholder
             self?.detailTextField.textColor = UIColor.lightGray
             self?.detailTextField.layer.borderWidth = 1.0
             self?.detailTextField.layer.borderColor = UIColor.lightGray.cgColor
@@ -46,7 +57,7 @@ class InputViewController: UIViewController, UITextViewDelegate, UITextFieldDele
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.text == "勉強したことを記入してください"{
+        if textView.text == detailPlaceholder {
             textView.text = ""
             textView.textColor = UIColor.black
         } else {
@@ -57,7 +68,7 @@ class InputViewController: UIViewController, UITextViewDelegate, UITextFieldDele
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text == ""{
-            textView.text = "勉強したことを記入してください"
+            textView.text = detailPlaceholder
             textView.textColor = UIColor.lightGray
         }
     }
@@ -84,7 +95,7 @@ class InputViewController: UIViewController, UITextViewDelegate, UITextFieldDele
             present(ac, animated: true)
         }
         
-        if detail == "勉強したことを記入してください"{
+        if detail == detailPlaceholder{
             detail = ""
         }
         
@@ -110,7 +121,7 @@ class InputViewController: UIViewController, UITextViewDelegate, UITextFieldDele
         }
         
         titleTextField.text = ""
-        detailTextField.text = "勉強したことを記入してください"
+        detailTextField.text = detailPlaceholder
         detailTextField.textColor = UIColor.lightGray
         
     }
@@ -119,56 +130,5 @@ class InputViewController: UIViewController, UITextViewDelegate, UITextFieldDele
         guard let vc = storyboard?.instantiateViewController(identifier: "list") as? ListViewController else {return}
         navigationController?.pushViewController(vc, animated: true)
     }
-    
-    func checkRealm(){
-        let realm = try! Realm()
-        let today = Date()
-        let comps = DateComponents(day: 1, hour: 9)
-        tomorrow = Calendar.current.date(byAdding: comps, to: today)
-        guard let checkedTmr = tomorrow else { return }
-        let adjustedTmr = Calendar.current.date(byAdding: .day, value: -1, to: checkedTmr)
-        let tomorrowString = DateUtils.stringFromDate(date: adjustedTmr!, format: "yyyy/MM/dd") //-1日したい
-        let studies = realm.objects(Study.self).filter("firstDay = '\(tomorrowString)' OR secondDay = '\(tomorrowString)' OR thirdDay = '\(tomorrowString)' OR fourthDay = '\(tomorrowString)' OR fifthDay = '\(tomorrowString)'")
-        //        print(studies)
-        studyArrayForNotification = Array(studies) //RealmのResultをArrayに変換
-        print(adjustedTmr!)
-        print(tomorrowString)
-        //        print(studyArrayForNotification)
-    }
-    
-    func setNotification(){
-        //通知の処理
-        self.checkRealm()
-        if self.studyArrayForNotification.isEmpty{
-            print("no study tmr")
-        } else {
-            print("you have study plans")
-            let content = UNMutableNotificationContent()
-            content.title = "復習しましょう"
-            content.sound = .default
-            content.body = "今日は\(String(self.studyArrayForNotification.count))科目！"
-            
-            let today = Date()
-            let comps = DateComponents(day: 0, second: 10)
-            let targetDate = Calendar.current.date(byAdding: comps, to: today)!
-            
-            let identifier = DateUtils.stringFromDate(date: targetDate, format: "yMdkHms")
-            
-            let trigger = UNCalendarNotificationTrigger(dateMatching: Calendar.current.dateComponents([.year,.month,.day,.hour,.minute,.second], from: targetDate), repeats: false)
-            print(trigger)
-            ///identifierを変えないと上書き
-            
-            let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
-            
-            UNUserNotificationCenter.current().add(request, withCompletionHandler: {
-                error in
-                if error != nil{
-                    print(error?.localizedDescription as Any)
-                }
-                //エラーがなければrequestが通る
-            })
-            
-        }
-    }//ここまで
     
 }
