@@ -8,5 +8,5 @@ target 'RestudyScheduler' do
   # Pods for RestudyScheduler
 pod 'FSCalendar'
 pod 'RealmSwift'
-pod 'UITextView+Placeholder'
+pod 'LicensePlist'
 end

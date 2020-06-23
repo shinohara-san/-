@@ -18,6 +18,7 @@
 		9560B3FC24974D2400ED8856 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9560B3FB24974D2400ED8856 /* ListViewController.swift */; };
 		9560B3FE2497667900ED8856 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9560B3FD2497667900ED8856 /* DetailViewController.swift */; };
 		958C0D9E249791E600360500 /* CommonMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958C0D9D249791E600360500 /* CommonMethods.swift */; };
+		95CAA34B24A18E2D001B5B9A /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 95CAA34A24A18E2D001B5B9A /* Settings.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		9560B3FB24974D2400ED8856 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		9560B3FD2497667900ED8856 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		958C0D9D249791E600360500 /* CommonMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonMethods.swift; sourceTree = "<group>"; };
+		95CAA34A24A18E2D001B5B9A /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		A60F8479328C3B8A307AF365 /* Pods_RestudyScheduler.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RestudyScheduler.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -97,6 +99,7 @@
 				9560B3EE249705C900ED8856 /* Assets.xcassets */,
 				9560B3F0249705C900ED8856 /* LaunchScreen.storyboard */,
 				9560B3F3249705C900ED8856 /* Info.plist */,
+				95CAA34A24A18E2D001B5B9A /* Settings.bundle */,
 			);
 			path = RestudyScheduler;
 			sourceTree = "<group>";
@@ -123,6 +126,8 @@
 				9560B3DF249705C600ED8856 /* Frameworks */,
 				9560B3E0249705C600ED8856 /* Resources */,
 				EF91410E2C427CC97B9632A3 /* [CP] Embed Pods Frameworks */,
+				9543DA4924A0AE9B00FD6387 /* ShellScript */,
+				95B6CDC524A0B0010084B88C /* LicensePlist */,
 			);
 			buildRules = (
 			);
@@ -171,6 +176,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95CAA34B24A18E2D001B5B9A /* Settings.bundle in Resources */,
 				9560B3F2249705C900ED8856 /* LaunchScreen.storyboard in Resources */,
 				9560B3EF249705C900ED8856 /* Assets.xcassets in Resources */,
 				9560B3ED249705C600ED8856 /* Main.storyboard in Resources */,
@@ -201,6 +207,41 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		9543DA4924A0AE9B00FD6387 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ $CONFIGURATION = \"Debug\" ]; then\n${PODS_ROOT}/LicensePlist/license-plist --output-path $PRODUCT_NAME/Settings.bundle\nfi\n";
+		};
+		95B6CDC524A0B0010084B88C /* LicensePlist */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = LicensePlist;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif [ $CONFIGURATION = \"Debug\" ]; then\n    ${PODS_ROOT}/LicensePlist/license-plist --output-path RestudyScheduler/Settings.bundle\nfi\n";
 		};
 		EF91410E2C427CC97B9632A3 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
