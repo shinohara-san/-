@@ -65,6 +65,9 @@
                             </view>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="gDv-dY-qK5">
                                 <rect key="frame" x="0.0" y="365" width="414" height="436"/>
+                                <connections>
+                                    <action selector="getDate:" destination="BYZ-38-t0r" eventType="valueChanged" id="mEr-mw-2yk"/>
+                                </connections>
                             </datePicker>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

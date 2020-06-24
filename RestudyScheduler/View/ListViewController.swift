@@ -41,7 +41,6 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         DispatchQueue.main.async { [weak self] in
             self?.subjectsLabel.text = today
-//            self?.subjectsLabel.backgroundColor = UIColor(red: 240/255, green: 255/255, blue: 255/255, alpha: 1)
             self?.filterTask(for: today)
             self?.calendar.appearance.borderRadius = 0 //四角
             self?.calendar.backgroundColor = UIColor(red: 240/255, green: 255/255, blue: 255/255, alpha: 1)

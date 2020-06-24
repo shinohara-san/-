@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         let center = UNUserNotificationCenter.current()
+        
         center.requestAuthorization(options: [.alert, .badge, .sound]) {(granted, error) in
             if granted {
                 print("許可する")
@@ -23,22 +24,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print("許可しない")
             }
         }
+        
         let config = Realm.Configuration(schemaVersion: 3)
         Realm.Configuration.defaultConfiguration = config
         print(Realm.Configuration.defaultConfiguration.fileURL!)
         
         let realm = try! Realm()
-        let today = Date()
-        let todayString = DateUtils.stringFromDate(date: today, format: "yyyy/MM/dd")
+//        let comp = 
+        let today = Calendar.current.date(byAdding: .hour, value: 9, to: Date())
+        let todayString = DateUtils.stringFromDate(date: today!, format: "yyyy/MM/dd")
+//        print(today!)
+//        print(todayString)
         let studies = realm.objects(Study.self).filter("firstDay = '\(todayString)' OR secondDay = '\(todayString)' OR thirdDay = '\(todayString)' OR fourthDay = '\(todayString)' OR fifthDay = '\(todayString)'")
         let array = Array(studies)
+//        print("studiesの中身: \(studies)")
+//        print("arrayの中身: \(array)")
         switch array.count{
         case 0:
             setLocalNotification(title:"今日の復習はありません。", message:"でも油断は禁物！")
         default:
             setLocalNotification(title:"今日も復習しましょう！", message:"今日は\(array.count)科目です。")
         }
-        
         return true
     }
 

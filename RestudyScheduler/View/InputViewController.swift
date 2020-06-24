@@ -4,7 +4,6 @@
 //
 //  Created by Yuki Shinohara on 2020/06/21.
 //  Copyright © 2020 Yuki Shinohara. All rights reserved.
-///未来の日にち入力ふか
 
 import UIKit
 import RealmSwift
@@ -35,7 +34,7 @@ class InputViewController: UIViewController, UITextViewDelegate, UITextFieldDele
         datePicker.minimumDate = aWeekAgo
         datePicker.maximumDate = aWeekAhead
         
-        print(today)
+//        print(today)
         
         detailTextField.delegate = self
         titleTextField.delegate = self
@@ -86,6 +85,8 @@ class InputViewController: UIViewController, UITextViewDelegate, UITextFieldDele
     }
     
     @IBAction func saveButtonTapped(_ sender: Any) {
+//        print(dateString)
+
         guard let title = titleTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines),
             var detail = detailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
         
@@ -93,6 +94,7 @@ class InputViewController: UIViewController, UITextViewDelegate, UITextFieldDele
             let ac = UIAlertController(title: "エラー", message: "タイトルを入力してください", preferredStyle: .alert)
             ac.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             present(ac, animated: true)
+            return
         }
         
         if detail == detailPlaceholder{
