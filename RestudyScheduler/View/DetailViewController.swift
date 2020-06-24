@@ -43,14 +43,23 @@ class DetailViewController: UIViewController {
             self?.fourthDay.text = "第4回復習日: \(self?.study.fourthDay ?? "")"
             self?.fifthDay.text = "第5回復習日: \(self?.study.fifthDay ?? "")"
             
+            self?.view.backgroundColor = UIColor(red: 250/255, green: 250/255, blue: 250/255, alpha: 1)
+            
         }
         
         DispatchQueue.main.async {
+            
             self.firstDaySwitch.isOn = self.study.firstDayDone
+            self.firstDaySwitch.onTintColor = .systemYellow
             self.secondDaySwitch.isOn = self.study.secondDayDone
+            self.secondDaySwitch.onTintColor = .systemBlue
             self.thirdDaySwitch.isOn = self.study.thirdDayDone
+            self.thirdDaySwitch.onTintColor = .systemRed
             self.fourthDaySwitch.isOn = self.study.fourthDayDone
+            self.fourthDaySwitch.onTintColor = .systemGreen
             self.fifthDaySwitch.isOn = self.study.fifthDayDone
+            self.fifthDaySwitch.onTintColor = .systemOrange
+            
         }
     }
     
@@ -88,10 +97,13 @@ class DetailViewController: UIViewController {
     }
     @IBAction func fifthDaySwitchToggled(_ sender: Any) {
         let realm = try! Realm()
+        
         guard let updatedStudy = realm.objects(Study.self).filter("id = '\(study.id)'").first else {return}
+        
         try! realm.write {
             updatedStudy.fifthDayDone = study.fifthDayDone ? false : true
         }
+        
         checkAllTrue()
     }
     

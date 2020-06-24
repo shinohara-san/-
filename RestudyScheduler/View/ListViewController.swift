@@ -31,6 +31,9 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     var selectedDate = ""
     
     override func viewDidLoad() {
+        
+        ///ロードの段階でcellにデータ入れる
+        
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
@@ -42,8 +45,10 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         DispatchQueue.main.async { [weak self] in
             self?.subjectsLabel.text = today
             self?.filterTask(for: today)
-            self?.calendar.appearance.borderRadius = 0 //四角
+            //self?.calendar.appearance.borderRadius = 0 //四角
             self?.calendar.backgroundColor = UIColor(red: 240/255, green: 255/255, blue: 255/255, alpha: 1)
+//            self?.tableView.reloadData()
+//            self?.calendar.reloadData()
         }
     }
 
@@ -65,7 +70,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         let study = filteredStudyArray[indexPath.row]
 //        print(study.firstDay)
-        cell.contentView.backgroundColor = UIColor(red: 240/255, green: 255/255, blue: 255/255, alpha: 1)
+        cell.contentView.backgroundColor = UIColor(red: 250/255, green: 250/255, blue: 250/255, alpha: 1)
         cell.textLabel?.text = study.title
         cell.detailTextLabel?.text = study.detail
         

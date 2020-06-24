@@ -4,6 +4,7 @@
 //
 //  Created by Yuki Shinohara on 2020/06/21.
 //  Copyright © 2020 Yuki Shinohara. All rights reserved.
+// https://grandbig.github.io/blog/2016/01/17/tabbarcontroller/
 
 import UIKit
 import RealmSwift
@@ -19,7 +20,8 @@ class InputViewController: UIViewController, UITextViewDelegate, UITextFieldDele
     var dateString = ""
     var studyArrayForNotification = [Study]()
     var tomorrow:Date?
-    var detailPlaceholder = "詳細を記入してください。"
+    var titlePlaceholder = " タイトル(必須)"
+    var detailPlaceholder = "例) TOEIC単語1から20まで"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,19 +36,29 @@ class InputViewController: UIViewController, UITextViewDelegate, UITextFieldDele
         datePicker.minimumDate = aWeekAgo
         datePicker.maximumDate = aWeekAhead
         
-//        print(today)
-        
         detailTextField.delegate = self
         titleTextField.delegate = self
+//        tabBarItem.selectedImage = UIImage(named: "home")?.withRenderingMode(.alwaysOriginal);
         
         DispatchQueue.main.async { [weak self] in
+//            self?.titleTextField.textColor = UIColor.lightGray
+            self?.titleTextField.layer.borderWidth = 1.0
+            self?.titleTextField.layer.borderColor = UIColor.lightGray.cgColor
+            self?.titleTextField.layer.cornerRadius = 8.0
+            self?.titleTextField.attributedPlaceholder = NSAttributedString(string: self!.titlePlaceholder, attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
             
             self?.detailTextField.text = self?.detailPlaceholder
             self?.detailTextField.textColor = UIColor.lightGray
             self?.detailTextField.layer.borderWidth = 1.0
             self?.detailTextField.layer.borderColor = UIColor.lightGray.cgColor
             self?.detailTextField.layer.cornerRadius = 8.0
-            self?.saveButton.layer.cornerRadius = 8.0
+//            self?.saveButton.layer.cornerRadius = 8.0
+            self?.saveButton.layer.cornerRadius = 10
+            self?.saveButton.layer.shadowColor = UIColor.black.cgColor
+            self?.saveButton.layer.shadowOffset = .zero
+            self?.saveButton.layer.shadowOpacity = 0.3
+            self?.saveButton.layer.shadowRadius = 4
+            
         }
         
     }
@@ -128,9 +140,11 @@ class InputViewController: UIViewController, UITextViewDelegate, UITextFieldDele
         
     }
     
-    @IBAction func didTapBarItem(_ sender: Any) {
-        guard let vc = storyboard?.instantiateViewController(identifier: "list") as? ListViewController else {return}
-        navigationController?.pushViewController(vc, animated: true)
-    }
+//    @IBAction func didTapBarItem(_ sender: Any) {
+//        guard let vc = storyboard?.instantiateViewController(identifier: "list") as? ListViewController else {return}
+//        navigationController?.pushViewController(vc, animated: true)
+//    }
+    
+    
     
 }

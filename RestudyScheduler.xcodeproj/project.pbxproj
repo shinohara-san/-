@@ -19,6 +19,8 @@
 		9560B3FE2497667900ED8856 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9560B3FD2497667900ED8856 /* DetailViewController.swift */; };
 		958C0D9E249791E600360500 /* CommonMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958C0D9D249791E600360500 /* CommonMethods.swift */; };
 		95CAA34B24A18E2D001B5B9A /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 95CAA34A24A18E2D001B5B9A /* Settings.bundle */; };
+		95FA3AF124A32AFF00E1876B /* MyTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FA3AF024A32AFF00E1876B /* MyTabBarController.swift */; };
+		95FA3AF324A32C6700E1876B /* MyUINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FA3AF224A32C6700E1876B /* MyUINavigationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +39,8 @@
 		9560B3FD2497667900ED8856 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		958C0D9D249791E600360500 /* CommonMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonMethods.swift; sourceTree = "<group>"; };
 		95CAA34A24A18E2D001B5B9A /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		95FA3AF024A32AFF00E1876B /* MyTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTabBarController.swift; sourceTree = "<group>"; };
+		95FA3AF224A32C6700E1876B /* MyUINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyUINavigationController.swift; sourceTree = "<group>"; };
 		A60F8479328C3B8A307AF365 /* Pods_RestudyScheduler.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RestudyScheduler.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -100,6 +104,8 @@
 				9560B3F0249705C900ED8856 /* LaunchScreen.storyboard */,
 				9560B3F3249705C900ED8856 /* Info.plist */,
 				95CAA34A24A18E2D001B5B9A /* Settings.bundle */,
+				95FA3AF024A32AFF00E1876B /* MyTabBarController.swift */,
+				95FA3AF224A32C6700E1876B /* MyUINavigationController.swift */,
 			);
 			path = RestudyScheduler;
 			sourceTree = "<group>";
@@ -268,9 +274,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				9560B3E6249705C600ED8856 /* AppDelegate.swift in Sources */,
+				95FA3AF124A32AFF00E1876B /* MyTabBarController.swift in Sources */,
 				9560B3E8249705C600ED8856 /* SceneDelegate.swift in Sources */,
 				95540F81249F77550074B768 /* InputViewController.swift in Sources */,
 				9560B3FE2497667900ED8856 /* DetailViewController.swift in Sources */,
+				95FA3AF324A32C6700E1876B /* MyUINavigationController.swift in Sources */,
 				9560B3FC24974D2400ED8856 /* ListViewController.swift in Sources */,
 				958C0D9E249791E600360500 /* CommonMethods.swift in Sources */,
 				9560B3FA2497436600ED8856 /* Study.swift in Sources */,
