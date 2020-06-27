@@ -23,6 +23,10 @@ class InputViewController: UIViewController, UITextViewDelegate, UITextFieldDele
     var titlePlaceholder = " タイトル(必須)"
     var detailPlaceholder = "例) TOEIC単語1から20まで"
     
+//    override func loadView() { //storyboardでレイアウト作ってるので使えない
+//        print("loadView")
+//    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -60,6 +64,17 @@ class InputViewController: UIViewController, UITextViewDelegate, UITextFieldDele
             self?.saveButton.layer.shadowRadius = 4
             
         }
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        guard let vc = storyboard?.instantiateViewController(identifier: "list") as? ListViewController else {return}
+        guard let today = Calendar.current.date(byAdding: .hour, value: 9, to: Date()) else {return}
+        vc.selectedDate = DateUtils.stringFromDate(date: today, format: "yyyy/MM/dd")
+        print(vc.selectedDate)
+        vc.filterTask(for: vc.selectedDate)
+//        vc.tableView.reloadData()
+//        vc.calendar.reloadData()
         
     }
     
@@ -133,6 +148,11 @@ class InputViewController: UIViewController, UITextViewDelegate, UITextFieldDele
         try! realm.write {
             realm.add(newStudy)
         }
+        
+//        guard let vc = storyboard?.instantiateViewController(identifier: "list") as? ListViewController else {return}
+//        vc.filterTask(for: DateUtils.stringFromDate(date: Date(), format: "yyyy/MM/dd"))
+//        vc.tableView.reloadData()
+//        vc.calendar.reloadData()
         
         titleTextField.text = ""
         detailTextField.text = detailPlaceholder

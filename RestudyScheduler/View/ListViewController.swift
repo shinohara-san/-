@@ -32,8 +32,6 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         
-        ///ロードの段階でcellにデータ入れる
-        
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
@@ -43,6 +41,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         let today = DateUtils.stringFromDate(date: Date(), format: "yyyy/MM/dd")
         
         DispatchQueue.main.async { [weak self] in
+            self?.tableView.reloadData()
             self?.subjectsLabel.text = today
             self?.filterTask(for: today)
             //self?.calendar.appearance.borderRadius = 0 //四角
@@ -53,7 +52,13 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
 
     override func viewWillAppear(_ animated: Bool) {
+//        filterTask(for: DateUtils.stringFromDate(date: Date(), format: "yyyy/MM/dd"))
+        guard let today = Calendar.current.date(byAdding: .hour, value: 9, to: Date()) else {return}
+        selectedDate = DateUtils.stringFromDate(date: today, format: "yyyy/MM/dd")
+//        print(selectedDate)
+        filterTask(for: selectedDate)
         tableView.reloadData()
+        calendar.reloadData()
     }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
@@ -87,12 +92,13 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
         if editingStyle == .delete {
+            
             let realm = try! Realm()
              let studies = realm.objects(Study.self)
              let study = studies[indexPath.row]
              guard let index = filteredStudyArray.firstIndex(of: study) else { return }
-             filteredStudyArray.remove(at: index)
              
              let ac = UIAlertController(title: "削除しました", message: "\(study.title)", preferredStyle: .alert)
              ac.addAction(UIAlertAction(title: "ok", style: .default, handler: { _ in
@@ -101,9 +107,11 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
              present(ac, animated: true)
              
              try! realm.write({
+                filteredStudyArray.remove(at: index)
                  realm.delete(study)
              })
             
+            tableView.reloadData()
              calendar.reloadData()
             
         }

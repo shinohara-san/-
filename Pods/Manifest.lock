@@ -1,4 +1,5 @@
 PODS:
+  - AnimatedTabBar (0.1.7)
   - FSCalendar (2.8.1)
   - LicensePlist (2.15.1)
   - Realm (5.0.3):
@@ -8,23 +9,26 @@ PODS:
     - Realm (= 5.0.3)
 
 DEPENDENCIES:
+  - AnimatedTabBar
   - FSCalendar
   - LicensePlist
   - RealmSwift
 
 SPEC REPOS:
   trunk:
+    - AnimatedTabBar
     - FSCalendar
     - LicensePlist
     - Realm
     - RealmSwift
 
 SPEC CHECKSUMS:
+  AnimatedTabBar: ce6bc2c2993bd74b4b51c7977631e3321f417095
   FSCalendar: 5245140456fcbcac5824c203b98bd8068bdfee1a
   LicensePlist: 9fb7c521b431f94ea665046c15ed5f392583afbd
   Realm: bfca1699b61b0b17c3a69ae0e648314eae91fbdb
   RealmSwift: 493c9f089cd3893b3959007973c0e4f640906ba0
 
-PODFILE CHECKSUM: ec1e3d56b95424c723a858db5ed5076dddaeb6e7
+PODFILE CHECKSUM: 41a24b528ec0860dddf03f187a7a77d5631c9237
 
 COCOAPODS: 1.9.3

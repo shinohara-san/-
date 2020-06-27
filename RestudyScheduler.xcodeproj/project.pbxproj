@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		35B7211E7F7B2FD5CA2AE089 /* Pods_RestudyScheduler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A60F8479328C3B8A307AF365 /* Pods_RestudyScheduler.framework */; };
+		4D32D0420A7E6B9D52686BBD /* Pods_RestudyScheduler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79955E99C78CF43C9E1751BB /* Pods_RestudyScheduler.framework */; };
 		95540F81249F77550074B768 /* InputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95540F80249F77550074B768 /* InputViewController.swift */; };
 		9560B3E6249705C600ED8856 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9560B3E5249705C600ED8856 /* AppDelegate.swift */; };
 		9560B3E8249705C600ED8856 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9560B3E7249705C600ED8856 /* SceneDelegate.swift */; };
@@ -18,14 +18,15 @@
 		9560B3FC24974D2400ED8856 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9560B3FB24974D2400ED8856 /* ListViewController.swift */; };
 		9560B3FE2497667900ED8856 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9560B3FD2497667900ED8856 /* DetailViewController.swift */; };
 		958C0D9E249791E600360500 /* CommonMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958C0D9D249791E600360500 /* CommonMethods.swift */; };
+		95AEFCE024A6F82100DD4A25 /* OtherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AEFCDF24A6F82100DD4A25 /* OtherViewController.swift */; };
 		95CAA34B24A18E2D001B5B9A /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 95CAA34A24A18E2D001B5B9A /* Settings.bundle */; };
 		95FA3AF124A32AFF00E1876B /* MyTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FA3AF024A32AFF00E1876B /* MyTabBarController.swift */; };
 		95FA3AF324A32C6700E1876B /* MyUINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FA3AF224A32C6700E1876B /* MyUINavigationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		231BFC965EE8E425A2C5B0D4 /* Pods-RestudyScheduler.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RestudyScheduler.release.xcconfig"; path = "Target Support Files/Pods-RestudyScheduler/Pods-RestudyScheduler.release.xcconfig"; sourceTree = "<group>"; };
-		3A4FFD74261E1C2AA9C25D20 /* Pods-RestudyScheduler.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RestudyScheduler.debug.xcconfig"; path = "Target Support Files/Pods-RestudyScheduler/Pods-RestudyScheduler.debug.xcconfig"; sourceTree = "<group>"; };
+		04D8B5A8590464BC4FD0BA10 /* Pods-RestudyScheduler.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RestudyScheduler.debug.xcconfig"; path = "Target Support Files/Pods-RestudyScheduler/Pods-RestudyScheduler.debug.xcconfig"; sourceTree = "<group>"; };
+		79955E99C78CF43C9E1751BB /* Pods_RestudyScheduler.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RestudyScheduler.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		95540F80249F77550074B768 /* InputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViewController.swift; sourceTree = "<group>"; };
 		9560B3E2249705C600ED8856 /* RestudyScheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RestudyScheduler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9560B3E5249705C600ED8856 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -38,10 +39,11 @@
 		9560B3FB24974D2400ED8856 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		9560B3FD2497667900ED8856 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		958C0D9D249791E600360500 /* CommonMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonMethods.swift; sourceTree = "<group>"; };
+		95AEFCDF24A6F82100DD4A25 /* OtherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherViewController.swift; sourceTree = "<group>"; };
 		95CAA34A24A18E2D001B5B9A /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		95FA3AF024A32AFF00E1876B /* MyTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTabBarController.swift; sourceTree = "<group>"; };
 		95FA3AF224A32C6700E1876B /* MyUINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyUINavigationController.swift; sourceTree = "<group>"; };
-		A60F8479328C3B8A307AF365 /* Pods_RestudyScheduler.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RestudyScheduler.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BCD935AC3F015A0DE52A094B /* Pods-RestudyScheduler.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RestudyScheduler.release.xcconfig"; path = "Target Support Files/Pods-RestudyScheduler/Pods-RestudyScheduler.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,17 +51,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				35B7211E7F7B2FD5CA2AE089 /* Pods_RestudyScheduler.framework in Frameworks */,
+				4D32D0420A7E6B9D52686BBD /* Pods_RestudyScheduler.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1746CD83C78F700638488DC3 /* Frameworks */ = {
+		139829ABF757E0DFFA232CD3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A60F8479328C3B8A307AF365 /* Pods_RestudyScheduler.framework */,
+				79955E99C78CF43C9E1751BB /* Pods_RestudyScheduler.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -67,8 +69,8 @@
 		33226841917B4B451AD1A4D4 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				3A4FFD74261E1C2AA9C25D20 /* Pods-RestudyScheduler.debug.xcconfig */,
-				231BFC965EE8E425A2C5B0D4 /* Pods-RestudyScheduler.release.xcconfig */,
+				04D8B5A8590464BC4FD0BA10 /* Pods-RestudyScheduler.debug.xcconfig */,
+				BCD935AC3F015A0DE52A094B /* Pods-RestudyScheduler.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -79,7 +81,7 @@
 				9560B3E4249705C600ED8856 /* RestudyScheduler */,
 				9560B3E3249705C600ED8856 /* Products */,
 				33226841917B4B451AD1A4D4 /* Pods */,
-				1746CD83C78F700638488DC3 /* Frameworks */,
+				139829ABF757E0DFFA232CD3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -116,6 +118,7 @@
 				95540F80249F77550074B768 /* InputViewController.swift */,
 				9560B3FB24974D2400ED8856 /* ListViewController.swift */,
 				9560B3FD2497667900ED8856 /* DetailViewController.swift */,
+				95AEFCDF24A6F82100DD4A25 /* OtherViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -127,13 +130,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9560B3F6249705C900ED8856 /* Build configuration list for PBXNativeTarget "RestudyScheduler" */;
 			buildPhases = (
-				462FFF9F59E66E4DC4181D45 /* [CP] Check Pods Manifest.lock */,
+				DA275695E4CDF7655C61A90F /* [CP] Check Pods Manifest.lock */,
 				9560B3DE249705C600ED8856 /* Sources */,
 				9560B3DF249705C600ED8856 /* Frameworks */,
 				9560B3E0249705C600ED8856 /* Resources */,
-				EF91410E2C427CC97B9632A3 /* [CP] Embed Pods Frameworks */,
 				9543DA4924A0AE9B00FD6387 /* ShellScript */,
 				95B6CDC524A0B0010084B88C /* LicensePlist */,
+				9166F9A9974B9DCDA108F35B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -192,26 +195,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		462FFF9F59E66E4DC4181D45 /* [CP] Check Pods Manifest.lock */ = {
+		9166F9A9974B9DCDA108F35B /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RestudyScheduler/Pods-RestudyScheduler-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
+			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-RestudyScheduler-checkManifestLockResult.txt",
+				"${PODS_ROOT}/Target Support Files/Pods-RestudyScheduler/Pods-RestudyScheduler-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RestudyScheduler/Pods-RestudyScheduler-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		9543DA4924A0AE9B00FD6387 /* ShellScript */ = {
@@ -249,21 +247,26 @@
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif [ $CONFIGURATION = \"Debug\" ]; then\n    ${PODS_ROOT}/LicensePlist/license-plist --output-path RestudyScheduler/Settings.bundle\nfi\n";
 		};
-		EF91410E2C427CC97B9632A3 /* [CP] Embed Pods Frameworks */ = {
+		DA275695E4CDF7655C61A90F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-RestudyScheduler/Pods-RestudyScheduler-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Embed Pods Frameworks";
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-RestudyScheduler/Pods-RestudyScheduler-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RestudyScheduler-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RestudyScheduler/Pods-RestudyScheduler-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -282,6 +285,7 @@
 				9560B3FC24974D2400ED8856 /* ListViewController.swift in Sources */,
 				958C0D9E249791E600360500 /* CommonMethods.swift in Sources */,
 				9560B3FA2497436600ED8856 /* Study.swift in Sources */,
+				95AEFCE024A6F82100DD4A25 /* OtherViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -423,7 +427,7 @@
 		};
 		9560B3F7249705C900ED8856 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3A4FFD74261E1C2AA9C25D20 /* Pods-RestudyScheduler.debug.xcconfig */;
+			baseConfigurationReference = 04D8B5A8590464BC4FD0BA10 /* Pods-RestudyScheduler.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -442,7 +446,7 @@
 		};
 		9560B3F8249705C900ED8856 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 231BFC965EE8E425A2C5B0D4 /* Pods-RestudyScheduler.release.xcconfig */;
+			baseConfigurationReference = BCD935AC3F015A0DE52A094B /* Pods-RestudyScheduler.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

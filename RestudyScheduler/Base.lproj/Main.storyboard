@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--復習命！！！-->
+        <!--勉強したこと入力-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="InputViewController" customModule="RestudyScheduler" customModuleProvider="target" sceneMemberID="viewController">
@@ -99,7 +99,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="ABI-YR-jgc"/>
-                    <navigationItem key="navigationItem" title="復習命！！！" id="4Nh-Tz-cSh"/>
+                    <navigationItem key="navigationItem" title="勉強したこと入力" id="4Nh-Tz-cSh"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="datePicker" destination="gDv-dY-qK5" id="W6W-S0-Bc5"/>
@@ -170,11 +170,12 @@
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No subjects to review" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BlL-aV-CbP">
                                 <rect key="frame" x="0.0" y="388" width="414" height="60"/>
+                                <color key="backgroundColor" red="1" green="0.1857388616" blue="0.57339501380000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="BlL-aV-CbP" secondAttribute="height" multiplier="69:10" id="aEV-5V-YGv"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -357,6 +358,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="xzt-yJ-6RC" customClass="MyTabBarController" customModule="RestudyScheduler" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="3UV-JF-q9i">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
@@ -417,17 +419,45 @@
             </objects>
             <point key="canvasLocation" x="3778" y="930"/>
         </scene>
-        <!--その他-->
+        <!--このアプリについて-->
         <scene sceneID="EuD-49-pvA">
             <objects>
-                <viewController id="Wgo-HI-CXw" sceneMemberID="viewController">
+                <viewController id="Wgo-HI-CXw" customClass="OtherViewController" customModule="RestudyScheduler" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3iE-ll-4ao">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="e6b-We-5Ly">
+                                <rect key="frame" x="20" y="108" width="374" height="808"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <string key="text">1回目の復習は1〜2日後に行う
+2回目の復習は7日後に行う
+3回目の復習は16日後に行う
+4回目の復習は35日後に行う
+5回目の復習は62日後に行う
+
+このスケジュールは人間の記憶が薄れていく時間の平均値をベースに組み立てられたもので、前途した「忘れた頃に復習」できるよう調整されています。
+
+出典：DaiGo（2019）『知識を操る超読書術』かんき出版
+
+このアプリは上記の復習サイクルを気軽に行えるようにするために作りました。
+
+日頃の勉強にご活用いただければ幸いです。</string>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="italicSystem" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="e6b-We-5Ly" firstAttribute="leading" secondItem="No1-PI-aeb" secondAttribute="leading" constant="20" id="3vd-zS-ffA"/>
+                            <constraint firstItem="No1-PI-aeb" firstAttribute="trailing" secondItem="e6b-We-5Ly" secondAttribute="trailing" constant="20" id="HG5-vY-8PB"/>
+                            <constraint firstItem="e6b-We-5Ly" firstAttribute="top" secondItem="No1-PI-aeb" secondAttribute="top" constant="20" id="U5W-0G-Ibd"/>
+                            <constraint firstAttribute="bottom" secondItem="e6b-We-5Ly" secondAttribute="bottom" constant="-20" id="ycS-Ra-7Fh"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="No1-PI-aeb"/>
                     </view>
-                    <navigationItem key="navigationItem" title="その他" id="O9M-J3-RM6"/>
+                    <navigationItem key="navigationItem" title="このアプリについて" id="O9M-J3-RM6"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="42M-Ye-W0K" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
