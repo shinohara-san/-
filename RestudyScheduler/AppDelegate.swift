@@ -9,11 +9,34 @@
 import UIKit
 import UserNotifications
 import RealmSwift
+//import AnimatedTabBar
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+//    var window: UIWindow?
+    
+//    fileprivate var items:[AnimatedTabBarItem] = {
+//        var items = [AnimatedTabBarItem]()
+//
+//        let firstItem = AnimatedTabBarItem(icon: #imageLiteral(resourceName: "home"), title: "入力", controller: InputViewController())
+//        let secondItem = AnimatedTabBarItem(icon: #imageLiteral(resourceName: "thunder"), title: "カレンダー", controller: ListViewController())
+//        let thirdItem = AnimatedTabBarItem(icon: #imageLiteral(resourceName: "home"), title: "アプリ", controller: OtherViewController())
+//
+//        let itemArray = [firstItem, secondItem, thirdItem]
+//        for item in itemArray{
+//            items.append(item)
+//        }
+//        return items
+//    }()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+//        let tabBar = AnimatedTabBarController()
+//        tabBar.delegate = self
+//        window = UIWindow()
+//        window?.rootViewController = tabBar
+//        window?.makeKeyAndVisible()
+        
         // Override point for customization after application launch.
         let center = UNUserNotificationCenter.current()
         
@@ -95,3 +118,17 @@ extension AppDelegate: UNUserNotificationCenterDelegate{
         completionHandler([.alert, .sound])
     }
 }
+
+//extension AppDelegate: AnimatedTabBarDelegate{
+//    func tabBar(_ tabBar: AnimatedTabBar, itemFor index: Int) -> AnimatedTabBarItem {
+//        return items[index]
+//    }
+//
+//    func initialIndex(_ tabBar: AnimatedTabBar) -> Int? {
+//        return 0
+//    }
+//
+//    var numberOfItems: Int{
+//        return items.count
+//    }
+//}
