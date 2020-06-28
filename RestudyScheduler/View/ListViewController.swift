@@ -76,7 +76,16 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         let study = filteredStudyArray[indexPath.row]
 //        print(study.firstDay)
         cell.contentView.backgroundColor = UIColor(red: 250/255, green: 250/255, blue: 250/255, alpha: 1)
-        cell.textLabel?.text = study.title
+        
+        if study.firstDayDone, study.secondDayDone, study.thirdDayDone, study.fourthDayDone, study.fifthDayDone {
+            cell.textLabel?.text = "終了済: \(study.title)"
+            cell.textLabel?.textColor = .red
+            cell.detailTextLabel?.textColor = .red
+        } else {
+            cell.textLabel?.text = study.title
+            cell.textLabel?.textColor = .black
+        }
+        
         cell.detailTextLabel?.text = study.detail
         
         return cell

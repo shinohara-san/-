@@ -8,15 +8,10 @@
 
 import UIKit
 import RealmSwift
-import Accounts
-import Social
 
 class DetailViewController: UIViewController {
     
     var study: Study!
-    
-    var accountStore = ACAccountStore() //Twitter、Facebookなどの認証を行うクラス
-    var twitterAccount: ACAccount? //Twitterのアカウントデータを格納する
     
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var dateLabel: UILabel!
@@ -129,42 +124,12 @@ class DetailViewController: UIViewController {
     }
     
     func tweet(){
-        print("あああ")
+        let text = "復習サイクルAppで復習5回終了しましたー！皆さんも使ってみて😄"
+        let encodedText = text.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        if let encodedText = encodedText,
+            let url = URL(string: "https://twitter.com/intent/tweet?text=\(encodedText)") {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
     }
-    
-    private func getTwitterAccount() {
-    
-           //アカウントを取得するタイプをTwitterに設定する
-           let accountType =
-            accountStore.accountType(withAccountTypeIdentifier: ACAccountTypeIdentifierTwitter)
-    
-           //Twitterのアカウントを取得する
-        accountStore.requestAccessToAccounts(with: accountType, options: nil)
-           { (granted:Bool?, error:Error?)-> () in
-                   
-               if error != nil {
-                   // エラー処理
-                   print("error! \(error)")
-                   return
-               }
-            guard let granted = granted else {return}
-               if !granted {
-                   print("error! Twitterアカウントの利用が許可されていません")
-                   return
-               }
-               
-               // Twitterアカウント情報を取得
-            let accounts = self.accountStore.accounts(with: accountType)
-                   as! [ACAccount]
-    
-               if accounts.count == 0 {
-                   print("error! 設定画面からアカウントを設定してください")
-                   return
-               }
-               
-               // ActionSheetを表示
-//               self.selectTwitterAccount(accounts)
-           }
-       }
 
 }

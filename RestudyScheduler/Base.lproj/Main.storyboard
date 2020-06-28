@@ -112,7 +112,7 @@
             </objects>
             <point key="canvasLocation" x="4688.4057971014499" y="129.91071428571428"/>
         </scene>
-        <!--カレンダー-->
+        <!--復習カレンダー-->
         <scene sceneID="2sK-Yn-fTu">
             <objects>
                 <viewController storyboardIdentifier="list" id="G3a-z4-c7A" customClass="ListViewController" customModule="RestudyScheduler" customModuleProvider="target" sceneMemberID="viewController">
@@ -195,7 +195,7 @@
                         <viewLayoutGuide key="safeArea" id="GhC-vt-6Ex"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="カレンダー" image="calendar" catalog="system" selectedImage="calendar" id="3W4-nP-xse"/>
-                    <navigationItem key="navigationItem" title="カレンダー" id="wBE-sg-kyg" userLabel="カレンダー"/>
+                    <navigationItem key="navigationItem" title="復習カレンダー" id="wBE-sg-kyg" userLabel="カレンダー"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="calendar" destination="DkP-FT-Ezt" id="wch-3F-SAb"/>
@@ -484,7 +484,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="book" width="128" height="128"/>
         <image name="book" catalog="system" width="128" height="101"/>
         <image name="calendar" catalog="system" width="128" height="106"/>
         <image name="calendar" width="128" height="128"/>
