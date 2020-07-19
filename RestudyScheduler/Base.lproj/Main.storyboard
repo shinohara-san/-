@@ -7,111 +7,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--勉強したこと入力-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController id="BYZ-38-t0r" customClass="InputViewController" customModule="RestudyScheduler" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" 勉強したこと ※必須" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="MmR-Ek-EKj">
-                                <rect key="frame" x="62" y="108" width="290" height="40"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="MmR-Ek-EKj" secondAttribute="height" multiplier="29:4" id="6Yb-gh-JMG"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bGE-Of-DBv">
-                                <rect key="frame" x="20" y="168" width="374" height="197"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="bGE-Of-DBv" secondAttribute="height" multiplier="374:197" id="OAG-aY-u70"/>
-                                </constraints>
-                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TKz-Xd-VMf">
-                                <rect key="frame" x="62" y="752" width="290" height="40"/>
-                                <color key="backgroundColor" red="1" green="0.1857388616" blue="0.57339501380000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="TKz-Xd-VMf" secondAttribute="height" multiplier="29:4" id="jMg-l9-Fyz"/>
-                                </constraints>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="登録"/>
-                                <connections>
-                                    <action selector="saveButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YKd-rL-50i"/>
-                                </connections>
-                            </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ecs-A2-Tt2">
-                                <rect key="frame" x="197" y="88" width="20" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="Ecs-A2-Tt2" secondAttribute="height" multiplier="1:1" id="3oV-UB-vtC"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cd3-UU-G7u">
-                                <rect key="frame" x="197" y="148" width="20" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="cd3-UU-G7u" secondAttribute="height" multiplier="1:1" id="VHL-Qu-eez"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Re-me-S6g">
-                                <rect key="frame" x="196.5" y="792" width="21" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="6Re-me-S6g" secondAttribute="height" multiplier="1:1" id="Ac8-pq-Nzc"/>
-                                </constraints>
-                            </view>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="gDv-dY-qK5">
-                                <rect key="frame" x="0.0" y="365" width="414" height="387"/>
-                                <connections>
-                                    <action selector="getDate:" destination="BYZ-38-t0r" eventType="valueChanged" id="mEr-mw-2yk"/>
-                                </connections>
-                            </datePicker>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="Ecs-A2-Tt2" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="0r9-Qx-XJR"/>
-                            <constraint firstItem="6Re-me-S6g" firstAttribute="top" secondItem="TKz-Xd-VMf" secondAttribute="bottom" id="3fP-s5-UsL"/>
-                            <constraint firstItem="cd3-UU-G7u" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="4b4-sO-8Bs"/>
-                            <constraint firstItem="gDv-dY-qK5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="8ub-Xr-YLV"/>
-                            <constraint firstAttribute="trailing" secondItem="gDv-dY-qK5" secondAttribute="trailing" id="Aem-Ij-1BI"/>
-                            <constraint firstItem="6Re-me-S6g" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="B7w-JZ-G7M"/>
-                            <constraint firstItem="bGE-Of-DBv" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.903382" id="EY4-3G-vlw"/>
-                            <constraint firstItem="bGE-Of-DBv" firstAttribute="top" secondItem="cd3-UU-G7u" secondAttribute="bottom" id="Eae-pQ-bXb"/>
-                            <constraint firstItem="6Re-me-S6g" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="I4o-Sp-JAy"/>
-                            <constraint firstItem="6Re-me-S6g" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.0507246" id="KgS-0u-8GA"/>
-                            <constraint firstItem="bGE-Of-DBv" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="PhA-Py-V7q"/>
-                            <constraint firstItem="TKz-Xd-VMf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="TmH-qt-JM1"/>
-                            <constraint firstItem="TKz-Xd-VMf" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.7" id="WTK-aG-V1y"/>
-                            <constraint firstItem="MmR-Ek-EKj" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.7" id="afg-JR-3E6"/>
-                            <constraint firstItem="Ecs-A2-Tt2" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.0483092" id="eW0-FO-f5c"/>
-                            <constraint firstItem="gDv-dY-qK5" firstAttribute="top" secondItem="bGE-Of-DBv" secondAttribute="bottom" id="egw-UF-s6z"/>
-                            <constraint firstItem="cd3-UU-G7u" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.0483092" id="hLi-Bm-xol"/>
-                            <constraint firstItem="Ecs-A2-Tt2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="k6x-o1-Axb"/>
-                            <constraint firstItem="TKz-Xd-VMf" firstAttribute="top" secondItem="gDv-dY-qK5" secondAttribute="bottom" id="l4f-zh-bsr"/>
-                            <constraint firstItem="MmR-Ek-EKj" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="nqD-2Z-Lj0"/>
-                            <constraint firstItem="cd3-UU-G7u" firstAttribute="top" secondItem="MmR-Ek-EKj" secondAttribute="bottom" id="pfh-Hw-60Q"/>
-                            <constraint firstItem="MmR-Ek-EKj" firstAttribute="top" secondItem="Ecs-A2-Tt2" secondAttribute="bottom" id="vvo-Go-t32"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="入力" image="book" catalog="system" selectedImage="book" id="ABI-YR-jgc"/>
-                    <navigationItem key="navigationItem" title="勉強したこと入力" id="4Nh-Tz-cSh"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="datePicker" destination="gDv-dY-qK5" id="W6W-S0-Bc5"/>
-                        <outlet property="detailTextField" destination="bGE-Of-DBv" id="fzM-mC-c3u"/>
-                        <outlet property="saveButton" destination="TKz-Xd-VMf" id="lGb-ee-VLS"/>
-                        <outlet property="titleTextField" destination="MmR-Ek-EKj" id="BbE-0v-w8C"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4688.4057971014499" y="129.91071428571428"/>
-        </scene>
         <!--復習カレンダー-->
         <scene sceneID="2sK-Yn-fTu">
             <objects>
@@ -363,38 +258,13 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="TMm-94-wQg" kind="relationship" relationship="viewControllers" id="P9A-s9-dHu"/>
-                        <segue destination="zU4-fZ-aNS" kind="relationship" relationship="viewControllers" id="5kX-gk-mBT"/>
-                        <segue destination="FlT-Ix-31a" kind="relationship" relationship="viewControllers" id="IVs-Sm-LOc"/>
+                        <segue destination="tf1-QB-xTy" kind="relationship" relationship="viewControllers" id="PQr-NV-MUm"/>
+                        <segue destination="zU4-fZ-aNS" kind="relationship" relationship="viewControllers" id="670-M9-aHV"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MP6-em-gJ8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2868.115942028986" y="129.91071428571428"/>
-        </scene>
-        <!--MyUI Navigation Controller-->
-        <scene sceneID="UY5-Iw-Too">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="TMm-94-wQg" customClass="MyUINavigationController" customModule="RestudyScheduler" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" largeContentSizeImage="pen" springLoaded="YES" id="c59-ao-Ybu">
-                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="image" keyPath="SelectedImage" value="pencil"/>
-                        </userDefinedRuntimeAttributes>
-                    </tabBarItem>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="OBQ-pE-8hM">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="ioh-Ml-ISl"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="BoZ-Mg-c3C" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3778.2608695652175" y="129.91071428571428"/>
+            <point key="canvasLocation" x="2765" y="130"/>
         </scene>
         <!--MyUI Navigation Controller-->
         <scene sceneID="n9u-zS-itv">
@@ -419,16 +289,151 @@
             </objects>
             <point key="canvasLocation" x="3778" y="930"/>
         </scene>
-        <!--このアプリについて-->
-        <scene sceneID="EuD-49-pvA">
+        <!--勉強したこと入力-->
+        <scene sceneID="0ub-vQ-YW8">
             <objects>
-                <viewController id="Wgo-HI-CXw" customClass="OtherViewController" customModule="RestudyScheduler" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="3iE-ll-4ao">
+                <viewController id="L6Y-5J-Tzv" customClass="InputViewController" customModule="RestudyScheduler" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="U7n-AN-icM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="e6b-We-5Ly">
-                                <rect key="frame" x="20" y="108" width="374" height="808"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" 勉強したこと ※必須" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ulL-qn-wC4">
+                                <rect key="frame" x="62" y="108" width="290" height="40"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="ulL-qn-wC4" secondAttribute="height" multiplier="29:4" id="dvl-dG-6Bb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yrJ-XI-fGY">
+                                <rect key="frame" x="20" y="168" width="374" height="197"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="yrJ-XI-fGY" secondAttribute="height" multiplier="374:197" id="kfC-SE-fOP"/>
+                                </constraints>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eb1-Yu-Axv">
+                                <rect key="frame" x="62" y="752" width="290" height="40"/>
+                                <color key="backgroundColor" red="1" green="0.1857388616" blue="0.57339501380000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="eb1-Yu-Axv" secondAttribute="height" multiplier="29:4" id="p2v-OJ-12j"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="登録"/>
+                                <connections>
+                                    <action selector="saveButtonTapped:" destination="L6Y-5J-Tzv" eventType="touchUpInside" id="5Af-8u-jyt"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7a9-tS-7kx">
+                                <rect key="frame" x="197" y="88" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="7a9-tS-7kx" secondAttribute="height" multiplier="1:1" id="fKt-Fe-dqN"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BBE-ch-8sw">
+                                <rect key="frame" x="197" y="148" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="BBE-ch-8sw" secondAttribute="height" multiplier="1:1" id="96M-Fo-86y"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dIJ-pi-vaf">
+                                <rect key="frame" x="196.5" y="792" width="21" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="dIJ-pi-vaf" secondAttribute="height" multiplier="1:1" id="ZL7-3C-BTK"/>
+                                </constraints>
+                            </view>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="UJr-Pm-Acs">
+                                <rect key="frame" x="0.0" y="365" width="414" height="387"/>
+                                <connections>
+                                    <action selector="getDate:" destination="L6Y-5J-Tzv" eventType="valueChanged" id="ioo-Nb-JPg"/>
+                                </connections>
+                            </datePicker>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="ulL-qn-wC4" firstAttribute="centerX" secondItem="U7n-AN-icM" secondAttribute="centerX" id="1iA-Ct-ffQ"/>
+                            <constraint firstItem="7a9-tS-7kx" firstAttribute="top" secondItem="1XK-BR-afs" secondAttribute="top" id="3O3-8A-o81"/>
+                            <constraint firstItem="dIJ-pi-vaf" firstAttribute="centerX" secondItem="U7n-AN-icM" secondAttribute="centerX" id="C1o-Wh-PFe"/>
+                            <constraint firstItem="yrJ-XI-fGY" firstAttribute="width" secondItem="U7n-AN-icM" secondAttribute="width" multiplier="0.903382" id="D79-qj-yrN"/>
+                            <constraint firstAttribute="trailing" secondItem="UJr-Pm-Acs" secondAttribute="trailing" id="HZo-3C-a4h"/>
+                            <constraint firstItem="yrJ-XI-fGY" firstAttribute="top" secondItem="BBE-ch-8sw" secondAttribute="bottom" id="IE8-W6-8jH"/>
+                            <constraint firstItem="BBE-ch-8sw" firstAttribute="centerX" secondItem="U7n-AN-icM" secondAttribute="centerX" id="JFm-dg-vrB"/>
+                            <constraint firstItem="dIJ-pi-vaf" firstAttribute="bottom" secondItem="1XK-BR-afs" secondAttribute="bottom" id="L7d-Fr-FXq"/>
+                            <constraint firstItem="UJr-Pm-Acs" firstAttribute="top" secondItem="yrJ-XI-fGY" secondAttribute="bottom" id="PtV-Kb-Trs"/>
+                            <constraint firstItem="yrJ-XI-fGY" firstAttribute="centerX" secondItem="U7n-AN-icM" secondAttribute="centerX" id="Rsz-BA-zKM"/>
+                            <constraint firstItem="eb1-Yu-Axv" firstAttribute="width" secondItem="U7n-AN-icM" secondAttribute="width" multiplier="0.7" id="U18-A9-PbO"/>
+                            <constraint firstItem="BBE-ch-8sw" firstAttribute="width" secondItem="U7n-AN-icM" secondAttribute="width" multiplier="0.0483092" id="UUJ-6M-4Yz"/>
+                            <constraint firstItem="ulL-qn-wC4" firstAttribute="width" secondItem="U7n-AN-icM" secondAttribute="width" multiplier="0.7" id="Weh-dI-g8s"/>
+                            <constraint firstItem="eb1-Yu-Axv" firstAttribute="centerX" secondItem="U7n-AN-icM" secondAttribute="centerX" id="bFm-TK-SVi"/>
+                            <constraint firstItem="UJr-Pm-Acs" firstAttribute="leading" secondItem="1XK-BR-afs" secondAttribute="leading" id="eNL-sg-efx"/>
+                            <constraint firstItem="BBE-ch-8sw" firstAttribute="top" secondItem="ulL-qn-wC4" secondAttribute="bottom" id="ee3-pR-JgJ"/>
+                            <constraint firstItem="dIJ-pi-vaf" firstAttribute="width" secondItem="U7n-AN-icM" secondAttribute="width" multiplier="0.0507246" id="fr4-dU-N7V"/>
+                            <constraint firstItem="eb1-Yu-Axv" firstAttribute="top" secondItem="UJr-Pm-Acs" secondAttribute="bottom" id="ixU-dh-XsW"/>
+                            <constraint firstItem="7a9-tS-7kx" firstAttribute="width" secondItem="U7n-AN-icM" secondAttribute="width" multiplier="0.0483092" id="o0t-LX-shE"/>
+                            <constraint firstItem="7a9-tS-7kx" firstAttribute="centerX" secondItem="U7n-AN-icM" secondAttribute="centerX" id="qGC-sk-RJV"/>
+                            <constraint firstItem="dIJ-pi-vaf" firstAttribute="top" secondItem="eb1-Yu-Axv" secondAttribute="bottom" id="qka-Nx-7OK"/>
+                            <constraint firstItem="ulL-qn-wC4" firstAttribute="top" secondItem="7a9-tS-7kx" secondAttribute="bottom" id="rO8-wX-uij"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="1XK-BR-afs"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="入力" image="pencil.and.outline" catalog="system" selectedImage="pencil.and.outline" id="eUF-KN-Rg3"/>
+                    <navigationItem key="navigationItem" title="勉強したこと入力" id="9SL-pZ-iCx">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="list.dash" catalog="system" id="lsa-2N-SrP">
+                            <connections>
+                                <action selector="MoveToAboutVC:" destination="L6Y-5J-Tzv" id="P8T-So-YZb"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="datePicker" destination="UJr-Pm-Acs" id="zgl-SP-K4P"/>
+                        <outlet property="detailTextField" destination="yrJ-XI-fGY" id="L4H-g0-Fga"/>
+                        <outlet property="saveButton" destination="eb1-Yu-Axv" id="dtE-vt-ydb"/>
+                        <outlet property="titleTextField" destination="ulL-qn-wC4" id="BcJ-Pq-IGo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cv8-7B-6ED" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4688.4057971014499" y="129.91071428571428"/>
+        </scene>
+        <!--MyUI Navigation Controller-->
+        <scene sceneID="alG-ps-Hvu">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tf1-QB-xTy" customClass="MyUINavigationController" customModule="RestudyScheduler" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" largeContentSizeImage="pen" springLoaded="YES" id="0Vl-ye-HKf">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="image" keyPath="SelectedImage" value="pencil"/>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="wLi-tG-IGV">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="L6Y-5J-Tzv" kind="relationship" relationship="rootViewController" id="V00-cT-OLB"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ub3-4v-Vsd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3778.2608695652175" y="129.91071428571428"/>
+        </scene>
+        <!--このアプリについて-->
+        <scene sceneID="9yv-Zc-iVB">
+            <objects>
+                <viewController storyboardIdentifier="about" id="DyM-iw-WMy" customClass="AboutViewController" customModule="RestudyScheduler" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ScL-tC-aIQ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="KUG-5T-7hS">
+                                <rect key="frame" x="20" y="64" width="374" height="778"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <string key="text">1回目の復習は1〜2日後に行う
 2回目の復習は7日後に行う
@@ -440,9 +445,10 @@
 
 出典：DaiGo（2019）『知識を操る超読書術』かんき出版
 
-このアプリは上記の復習サイクルを気軽に行えるようにするために作りました。
 
-日頃の勉強にご活用いただければ幸いです。</string>
+
+
+このアプリは上記の復習サイクルを、誰でも気軽にできるようにと作りました。皆さんの日頃の学習に役立てていただければ幸いです。</string>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="italicSystem" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -450,45 +456,26 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="e6b-We-5Ly" firstAttribute="leading" secondItem="No1-PI-aeb" secondAttribute="leading" constant="20" id="3vd-zS-ffA"/>
-                            <constraint firstItem="No1-PI-aeb" firstAttribute="trailing" secondItem="e6b-We-5Ly" secondAttribute="trailing" constant="20" id="HG5-vY-8PB"/>
-                            <constraint firstItem="e6b-We-5Ly" firstAttribute="top" secondItem="No1-PI-aeb" secondAttribute="top" constant="20" id="U5W-0G-Ibd"/>
-                            <constraint firstAttribute="bottom" secondItem="e6b-We-5Ly" secondAttribute="bottom" constant="-20" id="ycS-Ra-7Fh"/>
+                            <constraint firstItem="KUG-5T-7hS" firstAttribute="trailing" secondItem="ScL-tC-aIQ" secondAttribute="trailingMargin" id="cb9-Ci-rfW"/>
+                            <constraint firstItem="Jt7-cD-cIg" firstAttribute="bottom" secondItem="KUG-5T-7hS" secondAttribute="bottom" constant="20" id="hxx-Yc-On8"/>
+                            <constraint firstItem="KUG-5T-7hS" firstAttribute="top" secondItem="Jt7-cD-cIg" secondAttribute="top" constant="20" id="kJZ-Ym-LIk"/>
+                            <constraint firstItem="KUG-5T-7hS" firstAttribute="leading" secondItem="ScL-tC-aIQ" secondAttribute="leadingMargin" id="ppn-s8-pBf"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="No1-PI-aeb"/>
+                        <viewLayoutGuide key="safeArea" id="Jt7-cD-cIg"/>
                     </view>
-                    <navigationItem key="navigationItem" title="このアプリについて" id="O9M-J3-RM6"/>
+                    <navigationItem key="navigationItem" title="このアプリについて" id="lhi-M9-V3E"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="42M-Ye-W0K" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="y5F-ym-CmR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5597.1014492753629" y="1708.9285714285713"/>
-        </scene>
-        <!--アプリについて-->
-        <scene sceneID="qfL-0n-eUB">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FlT-Ix-31a" customClass="MyUINavigationController" customModule="RestudyScheduler" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="アプリについて" image="list.dash" catalog="system" selectedImage="list.dash" id="Ry9-Yl-Uf8"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Txj-B1-hCT">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Wgo-HI-CXw" kind="relationship" relationship="rootViewController" id="JhT-ZN-XP4"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jQW-Dx-wiU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4686.9565217391309" y="1708.9285714285713"/>
+            <point key="canvasLocation" x="5629" y="130"/>
         </scene>
     </scenes>
     <resources>
-        <image name="book" catalog="system" width="128" height="101"/>
-        <image name="calendar" catalog="system" width="128" height="106"/>
         <image name="calendar" width="128" height="128"/>
+        <image name="calendar" catalog="system" width="128" height="106"/>
         <image name="list.dash" catalog="system" width="128" height="85"/>
-        <image name="pen" width="50" height="50"/>
+        <image name="pen" width="128" height="128"/>
         <image name="pencil" width="128" height="128"/>
+        <image name="pencil.and.outline" catalog="system" width="128" height="119"/>
     </resources>
 </document>

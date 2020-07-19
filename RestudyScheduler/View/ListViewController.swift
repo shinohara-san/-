@@ -25,9 +25,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
             tableView?.reloadData()
         }
     }
-    
-    var num = 0
-    
+
     var selectedDate = ""
     
     override func viewDidLoad() {
@@ -42,12 +40,11 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         DispatchQueue.main.async { [weak self] in
             self?.tableView.reloadData()
+//            self?.calendar.reloadData() calendarとtableviewの同時更新はできない？
             self?.subjectsLabel.text = today
             self?.filterTask(for: today)
             //self?.calendar.appearance.borderRadius = 0 //四角
             self?.calendar.backgroundColor = UIColor(red: 240/255, green: 255/255, blue: 255/255, alpha: 1)
-//            self?.tableView.reloadData()
-//            self?.calendar.reloadData()
         }
     }
 
@@ -55,10 +52,11 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
 //        filterTask(for: DateUtils.stringFromDate(date: Date(), format: "yyyy/MM/dd"))
         guard let today = Calendar.current.date(byAdding: .hour, value: 9, to: Date()) else {return}
         selectedDate = DateUtils.stringFromDate(date: today, format: "yyyy/MM/dd")
-//        print(selectedDate)
         filterTask(for: selectedDate)
-        tableView.reloadData()
-        calendar.reloadData()
+        DispatchQueue.main.async { [weak self] in
+            self?.tableView.reloadData()
+            self?.calendar.reloadData()
+        }
     }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
@@ -134,11 +132,13 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     }
     
+    
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int{
         let filteredDate = DateUtils.stringFromDate(date: date, format: "yyyy/MM/dd")
         filterTask(for: filteredDate)
-        num = filteredStudyArray.count
+        let num = filteredStudyArray.count
         return num
     }
+
     
 }

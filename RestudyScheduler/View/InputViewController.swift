@@ -150,7 +150,8 @@ class InputViewController: UIViewController, UITextViewDelegate, UITextFieldDele
         }
         
 //        guard let vc = storyboard?.instantiateViewController(identifier: "list") as? ListViewController else {return}
-//        vc.filterTask(for: DateUtils.stringFromDate(date: Date(), format: "yyyy/MM/dd"))
+//        guard let today = Calendar.current.date(byAdding: .hour, value: 9, to: Date()) else {return}
+//        vc.filterTask(for: DateUtils.stringFromDate(date: today, format: "yyyy/MM/dd"))
 //        vc.tableView.reloadData()
 //        vc.calendar.reloadData()
         
@@ -165,6 +166,11 @@ class InputViewController: UIViewController, UITextViewDelegate, UITextFieldDele
 //        navigationController?.pushViewController(vc, animated: true)
 //    }
     
+    @IBAction func MoveToAboutVC(_ sender: Any) {
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "about") as? AboutViewController {
+            navigationController?.pushViewController(vc, animated: true)
+        }
+    }
     
     
 }

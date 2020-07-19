@@ -18,11 +18,30 @@
 		9560B3FC24974D2400ED8856 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9560B3FB24974D2400ED8856 /* ListViewController.swift */; };
 		9560B3FE2497667900ED8856 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9560B3FD2497667900ED8856 /* DetailViewController.swift */; };
 		958C0D9E249791E600360500 /* CommonMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958C0D9D249791E600360500 /* CommonMethods.swift */; };
-		95AEFCE024A6F82100DD4A25 /* OtherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AEFCDF24A6F82100DD4A25 /* OtherViewController.swift */; };
 		95CAA34B24A18E2D001B5B9A /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 95CAA34A24A18E2D001B5B9A /* Settings.bundle */; };
+		95D4578D24A84D0400C5466E /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D4578C24A84D0400C5466E /* AboutViewController.swift */; };
+		95D457C924A9870300C5466E /* RestudySchedulerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D457C824A9870300C5466E /* RestudySchedulerTests.swift */; };
+		95D457E724AA00BD00C5466E /* RestudySchedulerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D457E624AA00BD00C5466E /* RestudySchedulerUITests.swift */; };
 		95FA3AF124A32AFF00E1876B /* MyTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FA3AF024A32AFF00E1876B /* MyTabBarController.swift */; };
 		95FA3AF324A32C6700E1876B /* MyUINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FA3AF224A32C6700E1876B /* MyUINavigationController.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		95D457CB24A9870300C5466E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9560B3DA249705C600ED8856 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9560B3E1249705C600ED8856;
+			remoteInfo = RestudyScheduler;
+		};
+		95D457E924AA00BD00C5466E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9560B3DA249705C600ED8856 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9560B3E1249705C600ED8856;
+			remoteInfo = RestudyScheduler;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		04D8B5A8590464BC4FD0BA10 /* Pods-RestudyScheduler.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RestudyScheduler.debug.xcconfig"; path = "Target Support Files/Pods-RestudyScheduler/Pods-RestudyScheduler.debug.xcconfig"; sourceTree = "<group>"; };
@@ -39,8 +58,14 @@
 		9560B3FB24974D2400ED8856 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		9560B3FD2497667900ED8856 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		958C0D9D249791E600360500 /* CommonMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonMethods.swift; sourceTree = "<group>"; };
-		95AEFCDF24A6F82100DD4A25 /* OtherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherViewController.swift; sourceTree = "<group>"; };
 		95CAA34A24A18E2D001B5B9A /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		95D4578C24A84D0400C5466E /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		95D457C624A9870300C5466E /* RestudySchedulerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RestudySchedulerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		95D457C824A9870300C5466E /* RestudySchedulerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestudySchedulerTests.swift; sourceTree = "<group>"; };
+		95D457CA24A9870300C5466E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		95D457E424AA00BD00C5466E /* RestudySchedulerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RestudySchedulerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		95D457E624AA00BD00C5466E /* RestudySchedulerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestudySchedulerUITests.swift; sourceTree = "<group>"; };
+		95D457E824AA00BD00C5466E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		95FA3AF024A32AFF00E1876B /* MyTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTabBarController.swift; sourceTree = "<group>"; };
 		95FA3AF224A32C6700E1876B /* MyUINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyUINavigationController.swift; sourceTree = "<group>"; };
 		BCD935AC3F015A0DE52A094B /* Pods-RestudyScheduler.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RestudyScheduler.release.xcconfig"; path = "Target Support Files/Pods-RestudyScheduler/Pods-RestudyScheduler.release.xcconfig"; sourceTree = "<group>"; };
@@ -52,6 +77,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D32D0420A7E6B9D52686BBD /* Pods_RestudyScheduler.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		95D457C324A9870300C5466E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		95D457E124AA00BD00C5466E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +118,8 @@
 			isa = PBXGroup;
 			children = (
 				9560B3E4249705C600ED8856 /* RestudyScheduler */,
+				95D457C724A9870300C5466E /* RestudySchedulerTests */,
+				95D457E524AA00BD00C5466E /* RestudySchedulerUITests */,
 				9560B3E3249705C600ED8856 /* Products */,
 				33226841917B4B451AD1A4D4 /* Pods */,
 				139829ABF757E0DFFA232CD3 /* Frameworks */,
@@ -89,6 +130,8 @@
 			isa = PBXGroup;
 			children = (
 				9560B3E2249705C600ED8856 /* RestudyScheduler.app */,
+				95D457C624A9870300C5466E /* RestudySchedulerTests.xctest */,
+				95D457E424AA00BD00C5466E /* RestudySchedulerUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -118,9 +161,27 @@
 				95540F80249F77550074B768 /* InputViewController.swift */,
 				9560B3FB24974D2400ED8856 /* ListViewController.swift */,
 				9560B3FD2497667900ED8856 /* DetailViewController.swift */,
-				95AEFCDF24A6F82100DD4A25 /* OtherViewController.swift */,
+				95D4578C24A84D0400C5466E /* AboutViewController.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		95D457C724A9870300C5466E /* RestudySchedulerTests */ = {
+			isa = PBXGroup;
+			children = (
+				95D457C824A9870300C5466E /* RestudySchedulerTests.swift */,
+				95D457CA24A9870300C5466E /* Info.plist */,
+			);
+			path = RestudySchedulerTests;
+			sourceTree = "<group>";
+		};
+		95D457E524AA00BD00C5466E /* RestudySchedulerUITests */ = {
+			isa = PBXGroup;
+			children = (
+				95D457E624AA00BD00C5466E /* RestudySchedulerUITests.swift */,
+				95D457E824AA00BD00C5466E /* Info.plist */,
+			);
+			path = RestudySchedulerUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -147,18 +208,62 @@
 			productReference = 9560B3E2249705C600ED8856 /* RestudyScheduler.app */;
 			productType = "com.apple.product-type.application";
 		};
+		95D457C524A9870300C5466E /* RestudySchedulerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 95D457CF24A9870300C5466E /* Build configuration list for PBXNativeTarget "RestudySchedulerTests" */;
+			buildPhases = (
+				95D457C224A9870300C5466E /* Sources */,
+				95D457C324A9870300C5466E /* Frameworks */,
+				95D457C424A9870300C5466E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				95D457CC24A9870300C5466E /* PBXTargetDependency */,
+			);
+			name = RestudySchedulerTests;
+			productName = RestudySchedulerTests;
+			productReference = 95D457C624A9870300C5466E /* RestudySchedulerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		95D457E324AA00BD00C5466E /* RestudySchedulerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 95D457ED24AA00BD00C5466E /* Build configuration list for PBXNativeTarget "RestudySchedulerUITests" */;
+			buildPhases = (
+				95D457E024AA00BD00C5466E /* Sources */,
+				95D457E124AA00BD00C5466E /* Frameworks */,
+				95D457E224AA00BD00C5466E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				95D457EA24AA00BD00C5466E /* PBXTargetDependency */,
+			);
+			name = RestudySchedulerUITests;
+			productName = RestudySchedulerUITests;
+			productReference = 95D457E424AA00BD00C5466E /* RestudySchedulerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		9560B3DA249705C600ED8856 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1140;
+				LastSwiftUpdateCheck = 1150;
 				LastUpgradeCheck = 1140;
 				ORGANIZATIONNAME = "Yuki Shinohara";
 				TargetAttributes = {
 					9560B3E1249705C600ED8856 = {
 						CreatedOnToolsVersion = 11.4;
+					};
+					95D457C524A9870300C5466E = {
+						CreatedOnToolsVersion = 11.5;
+						TestTargetID = 9560B3E1249705C600ED8856;
+					};
+					95D457E324AA00BD00C5466E = {
+						CreatedOnToolsVersion = 11.5;
+						TestTargetID = 9560B3E1249705C600ED8856;
 					};
 				};
 			};
@@ -176,6 +281,8 @@
 			projectRoot = "";
 			targets = (
 				9560B3E1249705C600ED8856 /* RestudyScheduler */,
+				95D457C524A9870300C5466E /* RestudySchedulerTests */,
+				95D457E324AA00BD00C5466E /* RestudySchedulerUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -189,6 +296,20 @@
 				9560B3F2249705C900ED8856 /* LaunchScreen.storyboard in Resources */,
 				9560B3EF249705C900ED8856 /* Assets.xcassets in Resources */,
 				9560B3ED249705C600ED8856 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		95D457C424A9870300C5466E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		95D457E224AA00BD00C5466E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,12 +405,41 @@
 				95FA3AF324A32C6700E1876B /* MyUINavigationController.swift in Sources */,
 				9560B3FC24974D2400ED8856 /* ListViewController.swift in Sources */,
 				958C0D9E249791E600360500 /* CommonMethods.swift in Sources */,
+				95D4578D24A84D0400C5466E /* AboutViewController.swift in Sources */,
 				9560B3FA2497436600ED8856 /* Study.swift in Sources */,
-				95AEFCE024A6F82100DD4A25 /* OtherViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		95D457C224A9870300C5466E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				95D457C924A9870300C5466E /* RestudySchedulerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		95D457E024AA00BD00C5466E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				95D457E724AA00BD00C5466E /* RestudySchedulerUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		95D457CC24A9870300C5466E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9560B3E1249705C600ED8856 /* RestudyScheduler */;
+			targetProxy = 95D457CB24A9870300C5466E /* PBXContainerItemProxy */;
+		};
+		95D457EA24AA00BD00C5466E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9560B3E1249705C600ED8856 /* RestudyScheduler */;
+			targetProxy = 95D457E924AA00BD00C5466E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		9560B3EB249705C600ED8856 /* Main.storyboard */ = {
@@ -463,6 +613,88 @@
 			};
 			name = Release;
 		};
+		95D457CD24A9870300C5466E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7RFPAQ2NAA;
+				INFOPLIST_FILE = RestudySchedulerTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.shino.RestudySchedulerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RestudyScheduler.app/RestudyScheduler";
+			};
+			name = Debug;
+		};
+		95D457CE24A9870300C5466E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7RFPAQ2NAA;
+				INFOPLIST_FILE = RestudySchedulerTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.shino.RestudySchedulerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RestudyScheduler.app/RestudyScheduler";
+			};
+			name = Release;
+		};
+		95D457EB24AA00BD00C5466E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7RFPAQ2NAA;
+				INFOPLIST_FILE = RestudySchedulerUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.shino.RestudySchedulerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = RestudyScheduler;
+			};
+			name = Debug;
+		};
+		95D457EC24AA00BD00C5466E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7RFPAQ2NAA;
+				INFOPLIST_FILE = RestudySchedulerUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.shino.RestudySchedulerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = RestudyScheduler;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -480,6 +712,24 @@
 			buildConfigurations = (
 				9560B3F7249705C900ED8856 /* Debug */,
 				9560B3F8249705C900ED8856 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		95D457CF24A9870300C5466E /* Build configuration list for PBXNativeTarget "RestudySchedulerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				95D457CD24A9870300C5466E /* Debug */,
+				95D457CE24A9870300C5466E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		95D457ED24AA00BD00C5466E /* Build configuration list for PBXNativeTarget "RestudySchedulerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				95D457EB24AA00BD00C5466E /* Debug */,
+				95D457EC24AA00BD00C5466E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
