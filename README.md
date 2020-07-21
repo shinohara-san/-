@@ -14,6 +14,10 @@
  
 * Swift 5
 * Xcode 11.5
+* FSCalendar 2.8.1
+* Realm 5.3.1
+* RealmSwift 5.3.1
+* LicensePlist
  
 # Installation
  
