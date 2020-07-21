@@ -64,7 +64,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        print("arrayの中身: \(array)")
         switch array.count{
         case 0:
-            setLocalNotification(title:"今日の復習はありません。", message:"でも油断は禁物！")
+            setLocalNotification(title:"今日の復習はありません。", message:"勉強しよう！")
         default:
             setLocalNotification(title:"今日も復習しましょう！", message:"今日は\(array.count)科目です。")
         }
