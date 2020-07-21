@@ -27,3 +27,7 @@ CocoaPodsが必要です。
 ```bash
 pod install
 ```
+
+# App Store
+
+https://apps.apple.com/jp/app/%E5%BE%A9%E7%BF%92%E3%82%B5%E3%82%A4%E3%82%AF%E3%83%AB/id1524236844?l=en
