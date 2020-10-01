@@ -9,5 +9,4 @@ target 'RestudyScheduler' do
 pod 'FSCalendar'
 pod 'RealmSwift'
 pod 'LicensePlist'
-pod 'AnimatedTabBar'
 end
