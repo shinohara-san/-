@@ -10,7 +10,7 @@ import UIKit
 import RealmSwift
 import FSCalendar
 
-class ListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, FSCalendarDelegate, FSCalendarDataSource {
+class ListViewController: UIViewController {
     
     @IBOutlet var calendar: FSCalendar!
     @IBOutlet var subjectsLabel: UILabel!
@@ -36,7 +36,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         calendar.delegate = self
         calendar.dataSource = self
         
-        let today = DateUtils.stringFromDate(date: Date(), format: "yyyy/MM/dd")
+        let today = DatabaseManager.shared.stringFromDate(date: Date(), format: "yyyy/MM/dd")
         
         DispatchQueue.main.async { [weak self] in
             self?.tableView.reloadData()
@@ -49,9 +49,8 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
 
     override func viewWillAppear(_ animated: Bool) {
-//        filterTask(for: DateUtils.stringFromDate(date: Date(), format: "yyyy/MM/dd"))
         guard let today = Calendar.current.date(byAdding: .hour, value: 9, to: Date()) else {return}
-        selectedDate = DateUtils.stringFromDate(date: today, format: "yyyy/MM/dd")
+        selectedDate = DatabaseManager.shared.stringFromDate(date: today, format: "yyyy/MM/dd")
         filterTask(for: selectedDate)
         DispatchQueue.main.async { [weak self] in
             self?.tableView.reloadData()
@@ -59,20 +58,26 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        selectedDate = DateUtils.stringFromDate(date: date, format: "yyyy/MM/dd")
-        subjectsLabel.text = selectedDate
-        filterTask(for: selectedDate)
+    func filterTask(for day: String){
+        let realm = try! Realm()
+        let filteredStudyResult = realm.objects(Study.self)
+            .filter("firstDay = '\(day)' OR secondDay = '\(day)' OR thirdDay = '\(day)' OR fourthDay = '\(day)' OR fifthDay = '\(day)'")
+        filteredStudyArray = Array(filteredStudyResult) //RealmのResultをArrayに変換
+        
     }
+    
+}
+
+extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filteredStudyArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         let study = filteredStudyArray[indexPath.row]
-//        print(study.firstDay)
         cell.contentView.backgroundColor = UIColor(red: 250/255, green: 250/255, blue: 250/255, alpha: 1)
         
         if study.firstDayDone, study.secondDayDone, study.thirdDayDone, study.fourthDayDone, study.fifthDayDone {
@@ -124,22 +129,20 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
             
         }
     }
+}
+
+extension ListViewController: FSCalendarDelegate, FSCalendarDataSource{
     
-    func filterTask(for day: String){
-        let realm = try! Realm()
-        let filteredStudyResult = realm.objects(Study.self)
-            .filter("firstDay = '\(day)' OR secondDay = '\(day)' OR thirdDay = '\(day)' OR fourthDay = '\(day)' OR fifthDay = '\(day)'")
-        filteredStudyArray = Array(filteredStudyResult) //RealmのResultをArrayに変換
-        
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        selectedDate = DatabaseManager.shared.stringFromDate(date: date, format: "yyyy/MM/dd")
+        subjectsLabel.text = selectedDate
+        filterTask(for: selectedDate)
     }
     
-    
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int{
-        let filteredDate = DateUtils.stringFromDate(date: date, format: "yyyy/MM/dd")
+        let filteredDate = DatabaseManager.shared.stringFromDate(date: date, format: "yyyy/MM/dd")
         filterTask(for: filteredDate)
         let num = filteredStudyArray.count
         return num
     }
-
-    
 }

@@ -18,7 +18,6 @@
 		9560B3FA2497436600ED8856 /* Study.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9560B3F92497436600ED8856 /* Study.swift */; };
 		9560B3FC24974D2400ED8856 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9560B3FB24974D2400ED8856 /* ListViewController.swift */; };
 		9560B3FE2497667900ED8856 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9560B3FD2497667900ED8856 /* DetailViewController.swift */; };
-		958C0D9E249791E600360500 /* CommonMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958C0D9D249791E600360500 /* CommonMethods.swift */; };
 		95CAA34B24A18E2D001B5B9A /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 95CAA34A24A18E2D001B5B9A /* Settings.bundle */; };
 		95D4578D24A84D0400C5466E /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D4578C24A84D0400C5466E /* AboutViewController.swift */; };
 		95D457C924A9870300C5466E /* RestudySchedulerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D457C824A9870300C5466E /* RestudySchedulerTests.swift */; };
@@ -58,7 +57,6 @@
 		9560B3F92497436600ED8856 /* Study.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Study.swift; sourceTree = "<group>"; };
 		9560B3FB24974D2400ED8856 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		9560B3FD2497667900ED8856 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		958C0D9D249791E600360500 /* CommonMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonMethods.swift; sourceTree = "<group>"; };
 		95CAA34A24A18E2D001B5B9A /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		95D4578C24A84D0400C5466E /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		95D457C624A9870300C5466E /* RestudySchedulerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RestudySchedulerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -120,7 +118,6 @@
 			isa = PBXGroup;
 			children = (
 				9560B3EE249705C900ED8856 /* Assets.xcassets */,
-				958C0D9D249791E600360500 /* CommonMethods.swift */,
 				9560B3E5249705C600ED8856 /* AppDelegate.swift */,
 				9560B3E7249705C600ED8856 /* SceneDelegate.swift */,
 				955E8C4F25259D8800E772E8 /* DatabaseManager.swift */,
@@ -464,7 +461,6 @@
 				9560B3FE2497667900ED8856 /* DetailViewController.swift in Sources */,
 				95FA3AF324A32C6700E1876B /* MyUINavigationController.swift in Sources */,
 				9560B3FC24974D2400ED8856 /* ListViewController.swift in Sources */,
-				958C0D9E249791E600360500 /* CommonMethods.swift in Sources */,
 				95D4578D24A84D0400C5466E /* AboutViewController.swift in Sources */,
 				9560B3FA2497436600ED8856 /* Study.swift in Sources */,
 			);

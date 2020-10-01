@@ -55,7 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let realm = try! Realm()
 //        let comp = 
         let today = Calendar.current.date(byAdding: .hour, value: 9, to: Date())
-        let todayString = DateUtils.stringFromDate(date: today!, format: "yyyy/MM/dd")
+        let todayString = DatabaseManager.shared.stringFromDate(date: today!, format: "yyyy/MM/dd")
 //        print(today!)
 //        print(todayString)
         let studies = realm.objects(Study.self).filter("firstDay = '\(todayString)' OR secondDay = '\(todayString)' OR thirdDay = '\(todayString)' OR fourthDay = '\(todayString)' OR fifthDay = '\(todayString)'")

@@ -82,14 +82,14 @@ class InputViewController: UIViewController, UITextViewDelegate, UITextFieldDele
     override func viewWillDisappear(_ animated: Bool) {
         guard let vc = storyboard?.instantiateViewController(identifier: "list") as? ListViewController else {return}
         guard let today = Calendar.current.date(byAdding: .hour, value: 9, to: Date()) else {return}
-        vc.selectedDate = DateUtils.stringFromDate(date: today, format: "yyyy/MM/dd")
+        vc.selectedDate = DatabaseManager.shared.stringFromDate(date: today, format: "yyyy/MM/dd")
 //        print(vc.selectedDate)
         vc.filterTask(for: vc.selectedDate)
         
     }
     
     @IBAction func getDate(_ sender: Any) {
-        dateString = DateUtils.stringFromDate(date: datePicker.date, format: "yyyy/MM/dd")
+        dateString = DatabaseManager.shared.stringFromDate(date: datePicker.date, format: "yyyy/MM/dd")
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
@@ -131,7 +131,7 @@ class InputViewController: UIViewController, UITextViewDelegate, UITextFieldDele
         }
         
         if dateString == ""{
-            dateString = DateUtils.stringFromDate(date: Date(), format: "yyyy/MM/dd")
+            dateString = DatabaseManager.shared.stringFromDate(date: Date(), format: "yyyy/MM/dd")
         }
         
         let newStudy = Study()
@@ -139,11 +139,11 @@ class InputViewController: UIViewController, UITextViewDelegate, UITextFieldDele
         newStudy.title = title
         newStudy.detail = detail
         newStudy.date = dateString
-        newStudy.firstDay = Calculate.getRestudyDay(study: newStudy, value: 1)
-        newStudy.secondDay = Calculate.getRestudyDay(study: newStudy, value: 7)
-        newStudy.thirdDay = Calculate.getRestudyDay(study: newStudy, value: 16)
-        newStudy.fourthDay = Calculate.getRestudyDay(study: newStudy, value: 35)
-        newStudy.fifthDay = Calculate.getRestudyDay(study: newStudy, value: 62)
+        newStudy.firstDay = DatabaseManager.shared.getRestudyDay(study: newStudy, value: 1)
+        newStudy.secondDay = DatabaseManager.shared.getRestudyDay(study: newStudy, value: 7)
+        newStudy.thirdDay = DatabaseManager.shared.getRestudyDay(study: newStudy, value: 16)
+        newStudy.fourthDay = DatabaseManager.shared.getRestudyDay(study: newStudy, value: 35)
+        newStudy.fifthDay = DatabaseManager.shared.getRestudyDay(study: newStudy, value: 62)
         
         
         DatabaseManager.shared.registerData(newStudy: newStudy) { [weak self](success) in
