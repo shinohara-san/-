@@ -13,7 +13,18 @@ class DatabaseManager {
     
     static let shared = DatabaseManager()
     
-    public func registerData(){
+    public func registerData(newStudy: Study, completion: @escaping (Bool) -> Void){
         
+        if newStudy.title == "" {
+            completion(false)
+            return
+        }
+
+        let realm = try! Realm()
+        try! realm.write {
+            realm.add(newStudy)
+        }
+        
+        completion(true)
     }
 }

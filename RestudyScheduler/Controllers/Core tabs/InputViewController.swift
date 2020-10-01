@@ -7,7 +7,6 @@
 // https://grandbig.github.io/blog/2016/01/17/tabbarcontroller/
 
 import UIKit
-import RealmSwift
 
 class InputViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate {
     
@@ -33,7 +32,10 @@ class InputViewController: UIViewController, UITextViewDelegate, UITextFieldDele
         setUpTitleTextField()
         setUpDetailTextField()
         setUpSaveButton()
-//        tabBarItem.selectedImage = UIImage(named: "home")?.withRenderingMode(.alwaysOriginal);
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapped(_:)))
+        tapGesture.delegate = self
+        view.addGestureRecognizer(tapGesture)
     }
     
     private func setUpDatePicker(){
@@ -124,13 +126,6 @@ class InputViewController: UIViewController, UITextViewDelegate, UITextFieldDele
         guard let title = titleTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines),
             var detail = detailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
         
-        if title == "" {
-            let ac = UIAlertController(title: "エラー", message: "タイトルを入力してください。", preferredStyle: .alert)
-            ac.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            present(ac, animated: true)
-            return
-        }
-        
         if detail == detailPlaceholder{
             detail = ""
         }
@@ -151,19 +146,25 @@ class InputViewController: UIViewController, UITextViewDelegate, UITextFieldDele
         newStudy.fifthDay = Calculate.getRestudyDay(study: newStudy, value: 62)
         
         
-        let realm = try! Realm()
-        try! realm.write {
-            realm.add(newStudy)
+        DatabaseManager.shared.registerData(newStudy: newStudy) { [weak self](success) in
+            if success {
+                self?.showAlert(title: "カレンダーに登録しました。", message: "忘れずに復習しましょう！")
+                self?.titleTextField.text = ""
+                self?.detailTextField.text = self?.detailPlaceholder
+                self?.detailTextField.textColor = UIColor.lightGray
+                return
+            } else {
+                self?.showAlert(title: "エラー", message: "タイトルを入力してください。")
+                return
+            }
         }
-        
-        titleTextField.text = ""
-        detailTextField.text = detailPlaceholder
-        detailTextField.textColor = UIColor.lightGray
-        
-        let ac = UIAlertController(title: "カレンダーに登録しました。", message: "忘れずに復習しましょう！", preferredStyle: .alert)
+    }
+    
+    private func showAlert(title: String, message: String ){
+        let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
         ac.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(ac, animated: true)
-        
+        return
     }
     
     @IBAction func MoveToAboutVC(_ sender: Any) {
@@ -172,5 +173,16 @@ class InputViewController: UIViewController, UITextViewDelegate, UITextFieldDele
         }
     }
     
+    
+}
+
+extension InputViewController: UIGestureRecognizerDelegate{
+    
+    @objc func tapped(_ sender: UITapGestureRecognizer) {
+        if sender.state == .ended {
+            titleTextField.resignFirstResponder()
+            detailTextField.resignFirstResponder()
+        }
+    }
     
 }
